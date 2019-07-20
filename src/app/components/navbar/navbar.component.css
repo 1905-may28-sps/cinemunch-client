@@ -1,0 +1,10 @@
+.navbar-custom { 
+    background-color: #2c0e31 !important; 
+
+}
+.navbar-custom a {
+    color: #fff !important;
+    text-transform: uppercase;
+    font-family: helvetica;
+}
+
