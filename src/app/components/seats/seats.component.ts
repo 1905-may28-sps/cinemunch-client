@@ -35,43 +35,27 @@ private seatConfig: any = null;
 
 
   ngOnInit(): void {
-    //Process a simple bus layout
     this.seatConfig = [
       {
         "seat_price": 18.50,
         "seat_map": [
           {
             "seat_label": "1",
-            "layout": "g_____"
+            "layout": "gg__gg__gg"
           },
           {
             "seat_label": "2",
-            "layout": "gg__gg"
+            "layout": "gg__gg__gg"
           },
           {
             "seat_label": "3",
-            "layout": "gg__gg"
+            "layout": "gg__gg__gg"
           },
           {
             "seat_label": "4",
-            "layout": "gg__gg"
-          },
-          {
-            "seat_label": "5",
-            "layout": "gg__gg"
-          },
-          {
-            "seat_label": "6",
-            "layout": "gg__gg"
-          },
-          {
-            "seat_label": "7",
-            "layout": "gg__gg"
-          },
-          {
-            "seat_label": "8",
-            "layout": "gggggg"
+            "layout": "gg__gg__gg"
           }
+          
         ]
       }
     ]    

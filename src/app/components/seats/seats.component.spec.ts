@@ -50,6 +50,6 @@ describe('SeatsComponent', () => {
     const fixture = TestBed.createComponent(SeatsComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to seat-chart-generator!');
+    expect(compiled.querySelector('h1').textContent).toContain('Please choose your desired seats');
   });
 });
