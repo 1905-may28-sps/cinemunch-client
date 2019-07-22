@@ -23,11 +23,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     NavbarComponent,
     MenuComponent,
     SeatsComponent,
-<<<<<<< HEAD
-    MoviesComponent
-=======
+    MoviesComponent,
     WelcomeComponent
->>>>>>> 62e007a270e840a0b36dddf09b01be76de23b404
     
     
   ],
