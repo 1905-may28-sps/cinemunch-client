@@ -6,18 +6,23 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SeatsComponent } from './components/seats/seats.component';
+import { MoviesComponent } from './components/movies/movies/movies.component';
 
+import { MoviesService} from './components/movies/movies/movies.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MenuComponent,
-    SeatsComponent
+    SeatsComponent,
+    MoviesComponent
     
     
   ],
@@ -26,10 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule,
+    NgbModule, HttpClientModule
 
   ],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
