@@ -11,13 +11,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MenuComponent,
-    SeatsComponent
+    SeatsComponent,
+    WelcomeComponent
     
     
   ],
