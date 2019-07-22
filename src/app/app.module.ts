@@ -15,6 +15,7 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     MenuComponent,
     SeatsComponent,
+<<<<<<< HEAD
     MoviesComponent
+=======
+    WelcomeComponent
+>>>>>>> 62e007a270e840a0b36dddf09b01be76de23b404
     
     
   ],
