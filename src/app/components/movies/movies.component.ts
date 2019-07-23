@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Movies} from './movies';
-import { MoviesService } from './movies.service';
+import { Movies } from 'src/app/models/movies';
+import { MoviesService } from 'src/app/services/movies.service';
 
 
 @Component({
@@ -10,8 +10,18 @@ import { MoviesService } from './movies.service';
 })
 export class MoviesComponent implements OnInit {
     
+  crawlImg: string;
+  spidermanImg: string;
+  toystoryImg: string;
+
   movies: Movies[];
-  constructor (private _moviesService: MoviesService){}
+  constructor (private _moviesService: MoviesService){
+
+  this.crawlImg = './assets/images/crawl.jpg';
+  this.spidermanImg = './assets/images/spiderman.jpg';
+  this.toystoryImg = './assets/images/toystory.jpg';
+
+  }
 
   ngOnInit(): void{
     this.getMovies();
