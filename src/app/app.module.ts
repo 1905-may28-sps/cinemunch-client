@@ -14,8 +14,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MenuService } from './services/menu.service';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,11 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     AppRoutingModule,
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule, HttpClientModule
+    NgbModule, HttpClientModule,
+    FormsModule
 
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
