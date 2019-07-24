@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { Menu } from '../models/menu.model';
+import { Menu } from '../models/menu';
 import { environment } from '../../environments/environment';
 
 

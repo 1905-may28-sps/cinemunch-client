@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Menu } from 'src/app/models/menu.model';
+import { Menu } from 'src/app/models/menu';
 import { MenuService } from 'src/app/services/menu.service';
 import { error } from '@angular/compiler/src/util';
 
@@ -11,6 +11,8 @@ import { error } from '@angular/compiler/src/util';
 export class MenuComponent implements OnInit {
 
   menus: Menu[] = [];
+
+  imgSrc: String;
 
   constructor( private menuService: MenuService) { }
 
@@ -30,6 +32,7 @@ selectedMenu: Menu;
 onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
   console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
+  this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
 }
 
 }

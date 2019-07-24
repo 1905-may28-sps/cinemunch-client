@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MenuService } from './services/menu.service';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MenuService } from './services/menu.service';
     MenuComponent,
     SeatsComponent,
     MoviesComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CheckoutComponent
     
     
   ],
