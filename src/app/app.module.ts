@@ -17,13 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
-<<<<<<< HEAD
+import { RegisterService } from './services/register.service';
+import { LoginService } from './services/login.service';
+
 import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
 import { ShowtimesService } from './services/showtimes.service';
-=======
 import { MenuService } from './services/menu.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
->>>>>>> refs/remotes/origin/master
 
 @NgModule({
   declarations: [
@@ -42,15 +42,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     AppRoutingModule,
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule, HttpClientModule,
+    NgbModule, HttpClientModule, 
     FormsModule
 
   ],
-<<<<<<< HEAD
-  providers: [MoviesService, MovieAndTimeslotService, ShowtimesService],
-=======
-  providers: [MoviesService, MenuService],
->>>>>>> refs/remotes/origin/master
-  bootstrap: [AppComponent]
+  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
+  bootstrap: [AppComponent]  
 })
 export class AppModule { }

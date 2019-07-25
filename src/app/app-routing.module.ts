@@ -10,9 +10,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 
 //This is my case 
 const routes: Routes = [
-  {path: "", pathMatch: "full", redirectTo: "welcome"},
-  {path: "welcome", component: WelcomeComponent},
-  { path: 'movies', component: MoviesComponent},
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'movies', component: MoviesComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'seats', component: SeatsComponent},
   { path: 'checkout', component: CheckoutComponent},
