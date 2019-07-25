@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Menu } from 'src/app/models/menu';
+import { MenuService } from 'src/app/services/menu.service';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  menus: Menu[] = [];
+
+  imgSrc: String;
+
+  constructor( private menuService: MenuService) { }
 
   ngOnInit() {
+    this.getMenus();
   }
+  getMenus(){
+    this.menuService.getAllMenus().subscribe(
+      thisIsABody => {
+        console.log(thisIsABody);
+        this.menus = thisIsABody;
+      },
+      error => console.log('something bad happened')
+    );
+}
+selectedMenu: Menu;
+onSelect(menus: Menu): void {
+  this.selectedMenu =  menus;
+  console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
+  this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
+}
 
 }

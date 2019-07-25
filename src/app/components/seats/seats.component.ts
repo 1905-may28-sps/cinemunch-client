@@ -62,6 +62,7 @@ private seatConfig: any = null;
     this.processSeatChart(this.seatConfig);
   }
 
+
   public processSeatChart ( map_data : any[] )
   {
     
@@ -131,6 +132,7 @@ private seatConfig: any = null;
       }
   }
 
+
   public selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
@@ -154,36 +156,37 @@ private seatConfig: any = null;
       
     }
   }
-
-  public blockSeats(seatsToBlock : string)
-  {
-    if(seatsToBlock != "")
-    {
-      var seatsToBlockArr = seatsToBlock.split(',');
-      for (let index = 0; index < seatsToBlockArr.length; index++) {
-        var seat =  seatsToBlockArr[index]+"";
-        var seatSplitArr = seat.split("_");
-        console.log("Split seat: " , seatSplitArr);
-        for (let index2 = 0; index2 < this.seatmap.length; index2++) {
-          const element = this.seatmap[index2];
-          if(element.seatRowLabel == seatSplitArr[0])
-          {
-            var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
-            if(seatObj)
-            {
-              console.log("\n\n\nFount Seat to block: " , seatObj);
-              seatObj["status"] = "unavailable";
-              this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
-              console.log("\n\n\nSeat Obj" , seatObj);
-              console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
-              break;
-            }
-             
-          }
-        }
-       
-      }
-    }
-    
-  }
 }
+
+//   public blockSeats(seatsToBlock : string)
+//   {
+//     if(seatsToBlock != "")
+//     {
+//       var seatsToBlockArr = seatsToBlock.split(',');
+//       for (let index = 0; index < seatsToBlockArr.length; index++) {
+//         var seat =  seatsToBlockArr[index]+"";
+//         var seatSplitArr = seat.split("_");
+//         console.log("Split seat: " , seatSplitArr);
+//         for (let index2 = 0; index2 < this.seatmap.length; index2++) {
+//           const element = this.seatmap[index2];
+//           if(element.seatRowLabel == seatSplitArr[0])
+//           {
+//             var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
+//             if(seatObj)
+//             {
+//               console.log("\n\n\nFount Seat to block: " , seatObj);
+//               seatObj["status"] = "unavailable";
+//               this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
+//               console.log("\n\n\nSeat Obj" , seatObj);
+//               console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
+//               break;
+//             }
+             
+//           }
+//         }
+       
+//       }
+//     }
+    
+//   }
+// }

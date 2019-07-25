@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+   MenuAppUrl: 'http://localhost:8082/cinemunch'
 };

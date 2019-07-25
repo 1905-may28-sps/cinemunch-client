@@ -5,3 +5,4 @@ export class Movies{
     movieDescription: string;
     ticketPrice: number;
 }
+
