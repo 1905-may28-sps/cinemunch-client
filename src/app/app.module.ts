@@ -28,7 +28,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     SeatsComponent,
     MoviesComponent,
     WelcomeComponent,
-    CheckoutComponent
+    CheckoutComponent,
+
     
     
   ],
