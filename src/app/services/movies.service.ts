@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   
 export class MoviesService {
 
-  url = "http://localhost:8082/cinemunch/movie";
+  url = "http://localhost:8085/cinemunch/movie";
    
   constructor(private http: HttpClient) { }
 

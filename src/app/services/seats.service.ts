@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Seats } from '../models/seats';
 import { Observable } from 'rxjs';
@@ -8,12 +8,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SeatsService {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'*'
+      // 'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+      // 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization, Keep-Alive'
+    })
+  };
   
-  url="localhost:8085/cinemunch/seatingchart"
+  url="http://localhost:8085/cinemunch/seatingchart"
 
   constructor(private http: HttpClient) { }
 
-  public getAllMovies(): Observable<Seats[]>{
-    return this.http.get<Seats[]>(`{this.url}/seats`);
+  public getAllSeats(): Observable<Seats[]>{
+    return this.http.get<Seats[]>(`${this.url}`, this.httpOptions);
 }
 }
