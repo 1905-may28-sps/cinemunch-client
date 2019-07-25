@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
+import { ShowtimesService } from './services/showtimes.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     NgbModule, HttpClientModule
 
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, MovieAndTimeslotService, ShowtimesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Movies } from 'src/app/models/movies';
 import { MoviesService } from 'src/app/services/movies.service';
-
+import { MovieAndTimeslotService } from 'src/app/services/movie-and-timeslot.service';
+import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
+import { Router } from '@angular/router';
+import { showtimes } from 'src/app/models/showtimes';
 
 @Component({
   selector: 'app-movies',
@@ -13,14 +16,14 @@ export class MoviesComponent implements OnInit {
   crawlImg: string;
   spidermanImg: string;
   toystoryImg: string;
+  timeslot: movieAndTimeslot = new movieAndTimeslot();
 
   movies: Movies[];
-  constructor (private _moviesService: MoviesService){
+  constructor (private _moviesService: MoviesService, private _timeslotService: MovieAndTimeslotService, private router: Router){
 
   this.crawlImg = './assets/images/crawl.jpg';
-  this.spidermanImg = './assets/images/spiderman.jpg';
+  this.spidermanImg = './assets/images/spiderman1.jpg';
   this.toystoryImg = './assets/images/toystory.jpg';
-
   }
 
   ngOnInit(): void{
@@ -38,4 +41,18 @@ export class MoviesComponent implements OnInit {
           console.log(error);
       });
   }
+
+  getShowtimes(id: number){
+    this._timeslotService.getShowTimeByMovie(id).subscribe(
+      data => {console.log(data);
+      this.timeslot = data;}
+    )
+  }
+  selectedTimeslot(timeslot: showtimes){
+    console.log(timeslot);
+    this.router.navigateByUrl('/seats');
+  }
+   
 }
+
+ 
