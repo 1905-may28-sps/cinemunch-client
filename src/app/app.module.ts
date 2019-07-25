@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,10 +14,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
+
+import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
+import { ShowtimesService } from './services/showtimes.service';
+import { MenuService } from './services/menu.service';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { LoginService } from './services/login.service';
     MenuComponent,
     SeatsComponent,
     MoviesComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CheckoutComponent
     
     
   ],
@@ -40,7 +46,7 @@ import { LoginService } from './services/login.service';
     FormsModule
 
   ],
-  providers: [MoviesService, LoginService, RegisterService],
-  bootstrap: [AppComponent]
+  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
+  bootstrap: [AppComponent]  
 })
 export class AppModule { }

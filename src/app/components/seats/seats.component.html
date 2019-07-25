@@ -1,19 +1,26 @@
-<body>
+<body style="background-color: rgb(165, 117, 185)">
 <div>  
 <div class=jumbotron-fluid style="background-color: #2c0e31">
 <h1 id="title" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: azure">Please select your preferred seats</h1>
 </div>
 
 <div class="jumbotron" style="background-color: rgb(165, 117, 185)">
+    
+    
     <div class="col-lg-12 seat-container" >
         <div  *ngFor="let seatrow of seatmap " >
             <div class="col-12 pricing-label" *ngIf="seatChartConfig?.showRowWisePricing && seatrow.seatPricingInformation != ''">{{seatrow.seatPricingInformation}}</div>
+            <p class="bodyText-strong">The Screen</p>
             <div class="seatrow container">
+                
                 <div *ngIf="seatChartConfig?.showRowsLabel">
                     <div class="row-label" >  {{seatrow.seatRowLabel}} </div>
                 </div>
+                
                 <div *ngFor="let seatobj of seatrow.seats">
+                    
                     <div class="seat-item seat-space" style="color:white ; background-color:white" *ngIf="seatobj.seatLabel == ''">  &nbsp; </div>
+                    
                     <div tooltip="Seat : {{seatobj.seatLabel}} | Price : {{seatobj.price}}Rs" placement="top"
                     [ngClass]="{ 'seat-item' : true , 'seat-available' : seatobj.status == 'available' ,'seat-booked' : seatobj.status == 'booked' ,'seat-unavailable' : seatobj.status == 'unavailable' }" 
                      (click)="selectSeat(seatobj)" *ngIf="(seatobj.status == 'available' || seatobj.status == 'booked' )&& seatobj.seatLabel != ''">{{seatobj.seatNo}}</div>

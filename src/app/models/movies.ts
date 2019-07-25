@@ -1,7 +1,8 @@
 export class Movies{
-    id: number;
-    title: string;
-    actors: string;
-    description: string;
+    movieid: number;
+    movieName: string;
+    movieActors: string;
+    movieDescription: string;
     ticketPrice: number;
 }
+

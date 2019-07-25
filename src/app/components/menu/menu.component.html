@@ -5,15 +5,34 @@
           <p class="lead">Choose from our preselected Menu</p>
         </div>
       </div>
+<!---->
       <div class="container">
-            <div class="row">
-              <div class="col">
-<div id="menu">Menu</div>
+<h3>Menu</h3>
+<ul>
+<li *ngFor= "let m of menus" 
+[class.selected]="m === selectedMenu"
+(click)="onSelect(m)">
+  {{m.mealName}}, {{m.mealDescription}}, {{m.mealPrice}}
+    </li>
+</ul>
+  <div *ngIf="selectedMenu" class="details">
+<h4> You selected: {{selectedMenu.mealName}}. Details:</h4>
+<table>
+<tr>
+  <td> Price:</td>
+  <td><input [(ngModel)]="selectedMenu.mealPrice" placeholder="Price"> </td>
+</tr>
+</table>
+<img [src]="imgSrc" width="250" height="200">
+<button type="button" class="btn btn-secondary">Check Out</button>
+
+  </div>
+
             </div>
 
-              
-              <div class="col">
+            <!-- 
+           <div  *ngIf="selectedMenu" class="details">
                 <div id="order">Order Summary</div>
             </div>
             </div>
-    
+            --> 
