@@ -53,33 +53,20 @@
       </div>
       <div class="modal-body jumbotron">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" placeholder="First Name" [(ngModel)]="member.firstName" class="form-control col-12">
+        <input type="text" id="firstName" (focus)="removeMessage()" placeholder="First Name" [(ngModel)]="member.firstName" class="form-control col-12">
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" placeholder="Last Name" [(ngModel)]="member.lastName" class="form-control col-12">
+        <input type="text" id="lastName" (focus)="removeMessage()" placeholder="Last Name" [(ngModel)]="member.lastName" class="form-control col-12">
         <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" placeholder="Date of Birth" [(ngModel)]="member.dob" class="form-control col-12">
+        <input type="date" id="dob" (focus)="removeMessage()" placeholder="Date of Birth" [(ngModel)]="member.dob" class="form-control col-12">
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Email" [(ngModel)]="member.email" class="form-control col-12">
+        <input type="email" id="email" (focus)="removeMessage()" placeholder="Email" [(ngModel)]="member.email" class="form-control col-12">
         <label for="username">Please Choose A Username:</label>
-        <input type="text" id="username" [(ngModel)]="member.username" placeholder="Username" class="form-control col-12">
+        <input type="text" id="username" (focus)="removeMessage()" [(ngModel)]="member.username" placeholder="Username" class="form-control col-12">
         <label for="password">Please Choose A Password:</label>
-        <input type="password" id="password" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
-        <label>Please Choose A Membership Type:</label>
-        <select id="mtype" [(ngModel)]="selectedOption">
-          <option *ngFor="let o of options">{{o.name}}</option>
-        </select>
-        <p>Thank you for selecting {{selectedOption}} Membership.</p>
-     
-        <!--          <option value = "21">Bronze</option>
-          <option value = "22">Gold</option>
-          <input type="radio" value=1 id="guest" name="mtype" [(ngModel)]="member.membershipType">
-        <label for="guest">Guest</label>
-        <input type="radio" value=21 id="bronze" name="mtype" [(ngModel)]="member.membershipType">
-        <label for="bronze">Bronze </label>
-        <input type="radio" value=22 id="gold" name="mtype" [(ngModel)]="member.membershipType">
-        <label for=gold>Gold </label>-->
+        <input type="password" id="password" (focus)="removeMessage()" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
       </div>
       <div class="modal-footer">
+        <strong><span style="color:red" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="addMember()">Sign Up!</button>
       </div>
@@ -98,11 +85,12 @@
       </div>
       <div class="modal-body">
           <label for="username">Enter Username:</label>
-          <input type="text" id="usernameLogin" [(ngModel)]="member.username" placeholder="Username" class="form-control col-12">
+          <input type="text" id="usernameLogin" (focus)="removeMessage()" [(ngModel)]="member.username" placeholder="Username" class="form-control col-12">
           <label for="password">Enter Password:</label>
-          <input type="password" id="passwordLogin" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
+          <input type="password" id="passwordLogin" (focus)="removeMessage()" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
       </div>
       <div class="modal-footer">
+        <strong><span style="color:red" *ngIf = "loginError">{{WrongUsernamePassword}}</span></strong>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="loginMember()">Sign In!</button>
       </div>
