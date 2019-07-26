@@ -10,6 +10,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 
 import { MoviesService} from './services/movies.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +44,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule, HttpClientModule, 
-    FormsModule
+    FormsModule, StorageServiceModule
 
   ],
   providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
