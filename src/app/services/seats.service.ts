@@ -17,7 +17,7 @@ export class SeatsService {
     })
   };
   
-  url="http://localhost:8085/cinemunch/seatingchart"
+  url="http://localhost:8082/cinemunch/seatingchart"
 
   constructor(private http: HttpClient) { }
 
