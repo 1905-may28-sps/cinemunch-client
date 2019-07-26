@@ -3,6 +3,8 @@
         <div class="container">
           <h1 class="display-4">CineMunch Theater Menu</h1>
           <p class="lead">Choose from our preselected Menu</p>
+          <button (click)="differentRoute()">Not Hungry?</button>
+
         </div>
       </div>
 <!---->
@@ -24,7 +26,7 @@
 </tr>
 </table>
 <img [src]="imgSrc" width="250" height="200">
-<button type="button" class="btn btn-secondary">Check Out</button>
+<button (click)="differentRoute()">Check Out</button>
 
   </div>
 

@@ -21,10 +21,10 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
 
-import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
-import { ShowtimesService } from './services/showtimes.service';
 import { MenuService } from './services/menu.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
+import { ShowtimesService } from './services/showtimes.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 
   ],
   providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
-  bootstrap: [AppComponent]  
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

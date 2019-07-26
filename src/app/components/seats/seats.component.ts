@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
+import { SeatsService } from 'src/app/services/seats.service';
+import { Seats } from 'src/app/models/seats';
+import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-seats',
@@ -7,14 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeatsComponent implements OnInit {
 
-//   constructor() { }
+constructor(private seatsService : SeatsService, private router: Router) { }
 
-//   ngOnInit() {
-//   }
+seats: Seats[] = [];
+// seat: Seats = new Seats();
 
-// }
 private seatConfig: any = null;
-  private seatmap = [];
+private seatmap = [];
   
   private seatChartConfig = {
     showRowsLabel : false,
@@ -31,11 +34,28 @@ private seatConfig: any = null;
   };
   
 
-  title = 'seat-chart-generator';
+  // title = 'seat-chart-generator';
 
 
-  ngOnInit(): void {
+  
+    
+    
+
+  //   ngOnInit() {
+  //     this.getSeats();
+  //   }
+  
+      
+   
+
+  
+
+    
+    ngOnInit(): void {
+    this.getSeats();
     this.seatConfig = [
+  
+  
       {
         "seat_price": 18.50,
         "seat_map": [
@@ -59,8 +79,13 @@ private seatConfig: any = null;
         ]
       }
     ]    
+  
     this.processSeatChart(this.seatConfig);
+    // this.processSeatChart(this.seats);
   }
+
+
+
 
 
   public processSeatChart ( map_data : any[] )
@@ -132,8 +157,18 @@ private seatConfig: any = null;
       }
   }
 
+  getSeats(){
+    this.seatsService.getAllSeats().subscribe(
+      seatsmovie => {
+        console.log(seatsmovie);
+        this.seats = seatsmovie
+        
+      },
+      error => console.log('something bad happened')
+    );
 
-  public selectSeat( seatObject : any )
+    }
+  selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
     if(seatObject.status == "available")
@@ -156,37 +191,46 @@ private seatConfig: any = null;
       
     }
   }
-}
 
-//   public blockSeats(seatsToBlock : string)
-//   {
-//     if(seatsToBlock != "")
-//     {
-//       var seatsToBlockArr = seatsToBlock.split(',');
-//       for (let index = 0; index < seatsToBlockArr.length; index++) {
-//         var seat =  seatsToBlockArr[index]+"";
-//         var seatSplitArr = seat.split("_");
-//         console.log("Split seat: " , seatSplitArr);
-//         for (let index2 = 0; index2 < this.seatmap.length; index2++) {
-//           const element = this.seatmap[index2];
-//           if(element.seatRowLabel == seatSplitArr[0])
-//           {
-//             var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
-//             if(seatObj)
-//             {
-//               console.log("\n\n\nFount Seat to block: " , seatObj);
-//               seatObj["status"] = "unavailable";
-//               this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
-//               console.log("\n\n\nSeat Obj" , seatObj);
-//               console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
-//               break;
-//             }
+
+
+
+  blockSeats(seatsToBlock : string)
+  {
+    if(seatsToBlock != "")
+    {
+      var seatsToBlockArr = seatsToBlock.split(',');
+      for (let index = 0; index < seatsToBlockArr.length; index++) {
+        var seat =  seatsToBlockArr[index]+"";
+        var seatSplitArr = seat.split("_");
+        console.log("Split seat: " , seatSplitArr);
+        for (let index2 = 0; index2 < this.seatmap.length; index2++) {
+          const element = this.seatmap[index2];
+          if(element.seatRowLabel == seatSplitArr[0])
+          {
+            var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
+            if(seatObj)
+            {
+              console.log("\n\n\nFount Seat to block: " , seatObj);
+              seatObj["status"] = "unavailable";
+              this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
+              console.log("\n\n\nSeat Obj" , seatObj);
+              console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
+              break;
+            }
              
-//           }
-//         }
+          }
+        }
        
-//       }
-//     }
+      }
+    }
     
-//   }
-// }
+  }
+
+
+processBooking(){
+  console.log("processing Booking");
+  this.router.navigateByUrl('/menu');
+
+}
+}

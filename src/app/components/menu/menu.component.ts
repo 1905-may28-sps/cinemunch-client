@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from 'src/app/models/menu';
 import { MenuService } from 'src/app/services/menu.service';
-import { error } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
 
   imgSrc: String;
 
-  constructor( private menuService: MenuService) { }
+  constructor( private menuService: MenuService, private router:Router) { }
 
   ngOnInit() {
     this.getMenus();
@@ -33,6 +34,10 @@ onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
   console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
   this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
+}
+
+differentRoute(){
+  this.router.navigateByUrl('/checkout')
 }
 
 }
