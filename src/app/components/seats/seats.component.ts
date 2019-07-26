@@ -231,7 +231,7 @@ private seatmap = [];
 processBooking(){
   console.log("processing Booking");
   this.router.navigateByUrl('/menu');
-  // console.log("Succesfully navigating")
+  console.log("Succesfully navigating to Menu")
 
 }
 }
