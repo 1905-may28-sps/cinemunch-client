@@ -10,7 +10,8 @@ import { MoviesComponent } from './components/movies/movies.component';
 
 import { MoviesService} from './services/movies.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { StorageServiceModule} from 'angular-webstorage-service';
+
+import {LOCAL_STORAGE, WebStorageService, StorageServiceModule} from 'angular-webstorage-service';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,13 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { RegisterService } from './services/register.service';
-import { LoginService } from './services/login.service';
-
-import { MenuService } from './services/menu.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginService } from './services/login.service';
+import { RegisterService } from './services/register.service';
 import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
 import { ShowtimesService } from './services/showtimes.service';
+import { MenuService } from './services/menu.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,7 @@ import { ShowtimesService } from './services/showtimes.service';
 
   ],
   providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

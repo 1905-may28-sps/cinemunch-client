@@ -23,6 +23,10 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+<<<<<<< HEAD
+    "angular-bootstrap-md": "^8.1.0",
+=======
+>>>>>>> c94bae89c465f4b14eec7bf490d7fc8e18789011
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.3.1",
     "material-design-icons": "^3.0.1",
