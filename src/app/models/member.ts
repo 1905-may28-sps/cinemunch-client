@@ -1,4 +1,3 @@
-import { MembershipType } from './membershipType';
 import { Movies } from './movies';
 import { Menu } from './menu';
 
@@ -10,7 +9,4 @@ export class Member {
     email: string;
     username: string;
     password: string;
-    membershipType: MembershipType;
-    movie: Movies;
-    menu: Menu;
 }
