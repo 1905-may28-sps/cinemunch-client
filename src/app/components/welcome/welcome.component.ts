@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { RegisterService } from 'src/app/services/register.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
-import { MembershipType } from 'src/app/models/membershipType';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 
 
 
@@ -14,19 +14,19 @@ import { MembershipType } from 'src/app/models/membershipType';
 })
 export class WelcomeComponent implements OnInit {
 //cinemaImg: string;
-// membershipType: MembershipType = new MembershipType();
-selectedOption: string;
-
-options = [
-{ name: "Guest", value: 1 },
-{ name: "Bronze", value: 21 },
-{ name: "Gold", value: 22 }
-]
-// , membershipTypePrice: this.membershipType.membershipTypePrice
+WrongUsernamePassword = 'Wrong Username and/or Password. Please try again.';
+loginError;
+WrongOrNullRegistration = 'Wrong Registration Details. Please try again.';
+registerError;
+removeMessage(){
+  this.registerError = false;
+  this.loginError = false;
+}
 member: Member = new Member();
+public data:any=[]
 
 
-  constructor(private registerService: RegisterService, private loginService: LoginService, private router: Router) {
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private registerService: RegisterService, private loginService: LoginService, private router: Router) {
   //this.cinemaImg = './assets/images/cinema.jpg';
    }
 
@@ -37,22 +37,10 @@ member: Member = new Member();
 
   addMember(){
     console.log(this.member);
-    let membershipType = new MembershipType();
+
     // let type = new MembershipType();
-
     // type.membershipTypeId = 1;
-
     // this.member.membershipType = type;
-
-    if(this.selectedOption=="Guest"){
-    membershipType.membershipTypeId = 1;
-    this.member.membershipType = membershipType;}
-    else if(this.selectedOption=="Bronze"){
-    membershipType.membershipTypeId = 21;
-    this.member.membershipType = membershipType;}
-    else if(this.selectedOption=="Gold"){
-    membershipType.membershipTypeId = 22;
-    this.member.membershipType = membershipType;}
 
     this.registerService.addMember(this.member).subscribe(
       resp => {
@@ -62,6 +50,7 @@ member: Member = new Member();
         document.querySelector('body > div').classList.remove('modal-backdrop');
       },
       error=>{
+        this.registerError = true;
         console.log('could not post member');
       }
     )
@@ -78,10 +67,23 @@ member: Member = new Member();
         document.querySelector('body > div').classList.remove('modal-backdrop');
       },
       error=>{
+        this.loginError = true;
         console.log('could not login member');
       }
     )
 
   }
+
+saveInLocal(memberKey, member): void {
+    console.log('recieved= memberKey:' + memberKey + 'value:' + member);
+    this.storage.set(memberKey, member);
+    this.data[memberKey]= this.storage.get(memberKey);
+   }
+
+  //  getFromLocal(memberKey): void {
+  //   console.log('recieved= memberKey:' + memberKey);
+  //   this.data[memberKey]= this.storage.get(memberKey);
+  //   console.log(this.data);
+  //  }
 
 }
