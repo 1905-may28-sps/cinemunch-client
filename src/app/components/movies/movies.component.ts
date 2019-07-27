@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Movies } from 'src/app/models/movies';
 import { MoviesService } from 'src/app/services/movies.service';
 import { MovieAndTimeslotService } from 'src/app/services/movie-and-timeslot.service';
 import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
 import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
+import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-movies',
@@ -50,9 +51,11 @@ export class MoviesComponent implements OnInit {
   }
   selectedTimeslot(timeslot: showtimes){
     console.log(timeslot);
-    this.router.navigateByUrl('/seats');
+     this.router.navigateByUrl('/seats');
   }
-   
+
+
+
 }
 
  

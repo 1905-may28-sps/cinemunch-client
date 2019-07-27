@@ -67,7 +67,7 @@
       </div>
       <div class="modal-footer">
         <strong><span style="color:red" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="addMember()">Sign Up!</button>
       </div>
     </div>
@@ -91,8 +91,8 @@
       </div>
       <div class="modal-footer">
         <strong><span style="color:red" *ngIf = "loginError">{{WrongUsernamePassword}}</span></strong>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="loginMember()">Sign In!</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="loginMember()"  data-dismiss="modal">Sign In!</button>
       </div>
     </div>
   </div>
