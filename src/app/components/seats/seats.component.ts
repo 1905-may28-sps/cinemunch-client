@@ -137,8 +137,8 @@ private seatmap = [];
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatNo"] = "0"+seatNoCounter; }
-                else { seatObj["seatNo"] = ""+seatNoCounter; }
+                { seatObj["seatId"] = "0"+seatNoCounter; }
+                else { seatObj["seatId"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
               }
