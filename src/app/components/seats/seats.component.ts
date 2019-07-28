@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { SeatsService } from 'src/app/services/seats.service';
 import { Seats } from 'src/app/models/seats';
-import { ShowTime } from 'src/app/models/ShowTime';
+//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-seats',
@@ -12,6 +12,8 @@ import { ShowTime } from 'src/app/models/ShowTime';
 export class SeatsComponent implements OnInit {
 
 constructor(private seatsService : SeatsService, private router: Router) { }
+
+showTimeId = sessionStorage.getItem("showTimeId");
 
 seats: Seats[] = [];
 seat: Seats = new Seats();
@@ -37,16 +39,13 @@ private seatmap = [];
   // title = 'seat-chart-generator';
 
 
-  
-    
-    
+ 
 
   //   ngOnInit() {
   //     this.getSeats();
   //   }
   
-      
-   
+       
 
   
 
@@ -85,7 +84,7 @@ private seatmap = [];
   }
 
 
-
+ 
 
 
   public processSeatChart ( map_data : any[] )
@@ -176,6 +175,9 @@ private seatmap = [];
   selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
+    console.log("Selected Seat");
+    sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
+
     if(seatObject.status == "available")
     {
       seatObject.status = "booked";

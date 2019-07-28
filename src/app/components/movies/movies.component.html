@@ -36,9 +36,10 @@
                     </div>
                 </div>
             </div>
-            <ul>
+            
                 {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
-                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot()">
-                    {{time.showDate}} </li>
-            </ul>
+                <ul>
+                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                     {{time.showDate}}  </li>
+                </ul>
             <br><br><br>

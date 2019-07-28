@@ -20,6 +20,7 @@ export class MovieAndTimeslotService {
   constructor(private http: HttpClient) { }
 
   public getShowTimeByMovie(id: number): Observable<movieAndTimeslot>{
+    console.log("INSIDE SHOWTIMEBY MOVIE...");
     return this.http.get<movieAndTimeslot>(`${this.url}/${id}`, this.httpOptions);
 }
 }
