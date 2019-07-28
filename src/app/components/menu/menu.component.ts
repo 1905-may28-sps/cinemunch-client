@@ -39,13 +39,13 @@ onSelect(menus: Menu): void {
 }
 
 saveInLocal(menuKey,menus): void{
-  console.log('recieved= menuKey:' + menuKey + 'value' + menus);
+  console.log('received= menuKey:' + menuKey + 'value' + menus);
   this.storage.set(menuKey,menus);
   this.data[menuKey]= this.storage.get(menuKey)
 }
 /*
 getFromLocal(menuKey): void{
-  console.log('recieved= menuKey:' + menuKey);
+  console.log('received= menuKey:' + menuKey);
   this.data[menuKey]= this.storage.get(menuKey);
   console.log(this.data);
 }
