@@ -24,7 +24,9 @@ import { LoginService } from './services/login.service';
 import { RegisterService } from './services/register.service';
 import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
 import { ShowtimesService } from './services/showtimes.service';
+import { MemberkeyService } from './services/memberkey.service';
 import { MenuService } from './services/menu.service';
+
 
 @NgModule({
   declarations: [
@@ -47,8 +49,8 @@ import { MenuService } from './services/menu.service';
     FormsModule, StorageServiceModule
 
   ],
-  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService],
 
+  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService, MemberkeyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
