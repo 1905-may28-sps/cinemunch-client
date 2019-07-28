@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 <<<<<<< HEAD
+<<<<<<< HEAD
 //import { ShowTime } from 'src/app/models/ShowTime';
 =======
 >>>>>>> fcf4e25f40ad271e861e02ed2cda0ff507444e6e
+=======
+>>>>>>> tiff
 
 @Component({
   selector: 'app-movies',
