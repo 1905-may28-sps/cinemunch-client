@@ -6,13 +6,9 @@ import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
 import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 //import { ShowTime } from 'src/app/models/ShowTime';
-=======
->>>>>>> fcf4e25f40ad271e861e02ed2cda0ff507444e6e
-=======
->>>>>>> tiff
+
 
 @Component({
   selector: 'app-movies',
@@ -67,17 +63,17 @@ export class MoviesComponent implements OnInit {
     }
     )
   }
-<<<<<<< HEAD
+
   selectedTimeslot(timeslot : showtimes){
     
     console.log("Selected Timeslot : "+timeslot.showTimeId);
     sessionStorage.setItem("showTimeId", JSON.stringify(timeslot.showTimeId));
      this.router.navigateByUrl('/seats');
-=======
+
   selectedTimeslot(timeslot: showtimes){
     
     this.router.navigateByUrl('/seats');
->>>>>>> fcf4e25f40ad271e861e02ed2cda0ff507444e6e
+
   }
 
 
