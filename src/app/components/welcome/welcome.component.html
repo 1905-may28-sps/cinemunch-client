@@ -68,7 +68,7 @@
       <div class="modal-footer">
         <strong><span style="color:red" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addMember()">Sign Up!</button>
+        <button type="button" class="btn btn-primary" (click)="addMember()" data-dismiss="modal">Sign Up!</button>
       </div>
     </div>
   </div>
