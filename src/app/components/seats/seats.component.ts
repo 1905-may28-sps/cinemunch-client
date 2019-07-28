@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { SeatsService } from 'src/app/services/seats.service';
 import { Seats } from 'src/app/models/seats';
-import { ShowTime } from 'src/app/models/ShowTime';
+//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-seats',
@@ -13,8 +13,10 @@ export class SeatsComponent implements OnInit {
 
 constructor(private seatsService : SeatsService, private router: Router) { }
 
+showTimeId = sessionStorage.getItem("showTimeId");
+
 seats: Seats[] = [];
-// seat: Seats = new Seats();
+seat: Seats = new Seats();
 
 private seatConfig: any = null;
 private seatmap = [];
@@ -37,16 +39,13 @@ private seatmap = [];
   // title = 'seat-chart-generator';
 
 
-  
-    
-    
+ 
 
   //   ngOnInit() {
   //     this.getSeats();
   //   }
   
-      
-   
+       
 
   
 
@@ -60,19 +59,19 @@ private seatmap = [];
         "seat_price": 18.50,
         "seat_map": [
           {
-            "seat_label": "1",
+            "seat_label": this.seats,
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": "2",
+            "seat_label": this.seats,
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": "3",
+            "seat_label": this.seats,
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": "4",
+            "seat_label": this.seats,
             "layout": "gg__gg__gg"
           }
           
@@ -80,17 +79,18 @@ private seatmap = [];
       }
     ]    
   
-    this.processSeatChart(this.seatConfig);
+    this.processSeatChart(this.seatConfig)
     // this.processSeatChart(this.seats);
   }
 
 
-
+ 
 
 
   public processSeatChart ( map_data : any[] )
   {
-    
+
+
       if( map_data.length > 0 )
       {
         var seatNoCounter = 1;
@@ -102,17 +102,17 @@ private seatmap = [];
           row_label = "Row "+item_map[0].seat_label + " - ";
           if( item_map[ item_map.length - 1].seat_label != " " )
           {
-            row_label += item_map[ item_map.length - 1].seat_label;
+            row_label += item_map[ item_map.length - 1].seatsmovie;
           }
           else
           {
-            row_label += item_map[ item_map.length - 2].seat_label;
+            row_label += item_map[ item_map.length - 2].seatsmovie;
           }
-          row_label += " : Rs. " + map_data[__counter].seat_price;
+          row_label += " : Dollars. " + map_data[__counter].seat_price;
           
           item_map.forEach(map_element => {
             var mapObj = {
-              "seatRowLabel" : map_element.seat_label,
+              "seatRowLabel" : map_element.seatsmovie,
               "seats" : [],
               "seatPricingInformation" : row_label
             };
@@ -125,9 +125,11 @@ private seatmap = [];
             var totalItemCounter = 1;
             seatValArr.forEach(item => {
               var seatObj = {
-                "key" : map_element.seat_label+"_"+totalItemCounter,
+                "key" : this.seats,
+                // "key" : map_element.seat_label+"_"+totalItemCounter,
                 "price" : map_data[__counter]["seat_price"],
                 "status" : "available"
+                
               };
                
               if( item != '_')
@@ -157,11 +159,13 @@ private seatmap = [];
       }
   }
 
-  getSeats(){
+   public getSeats(){
     this.seatsService.getAllSeats().subscribe(
       seatsmovie => {
         console.log(seatsmovie);
-        this.seats = seatsmovie
+        this.seats = seatsmovie;
+        console.log(seatsmovie[0].seatId);
+        console.log(this.seats);
         
       },
       error => console.log('something bad happened')
@@ -171,6 +175,9 @@ private seatmap = [];
   selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
+    console.log("Selected Seat");
+    sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
+
     if(seatObject.status == "available")
     {
       seatObject.status = "booked";

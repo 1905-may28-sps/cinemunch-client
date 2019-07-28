@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  menubutton: String;
+
+  constructor() { 
+
+  this.menubutton = './assets/images/dropdown.png';
+  
+}
 
   ngOnInit() {
   }

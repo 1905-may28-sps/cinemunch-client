@@ -1,6 +1,6 @@
 <div class="container">
     <h4 class="display-24">CineMunch Movie List</h4>
-    <p class="lead">Choose from our Pre-selected Movie List</p>
+    <p class="lead">Choose your desired movie from the List</p>
 </div>
 
 <div class="container">
@@ -36,9 +36,10 @@
                     </div>
                 </div>
             </div>
-            <ul>
+            
                 {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
-                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot()">
-                    {{time.showDate}} </li>
-            </ul>
+                <ul>
+                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                     {{time.showDate}}  </li>
+                </ul>
             <br><br><br>
