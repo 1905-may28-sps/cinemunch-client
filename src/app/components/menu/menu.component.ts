@@ -19,6 +19,9 @@ export class MenuComponent implements OnInit {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private menuService: MenuService, private router:Router) { }
 
+  seatNo = sessionStorage.getItem("seatNo");
+
+
   ngOnInit() {
     this.getMenus();
   }
