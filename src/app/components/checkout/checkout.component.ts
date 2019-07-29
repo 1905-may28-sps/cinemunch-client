@@ -12,7 +12,9 @@ import { tick } from '@angular/core/testing';
 
 
 export class CheckoutComponent implements OnInit {
+MemberName=this.memberkeyService.getMemberKey();
 
+<<<<<<< HEAD
   
   constructor(private memberkeyService: MemberkeyService) { }
 
@@ -27,6 +29,18 @@ export class CheckoutComponent implements OnInit {
   
     ngOnInit(): void {
     this.calculateTotalPrice (parseFloat(this.totalamount), parseFloat(this.mealPrice));
+=======
+  constructor(private memberkeyService: MemberkeyService) { 
+
+  }
+
+  ngOnInit() {
+
+    
+    // console.log("this is the get memberkey again" + this.memberkeyService.getMemberKey());
+    // this.MemberName = this.memberkeyService.getMemberKey();
+
+>>>>>>> refs/remotes/origin/master
   }
 
 retrieveLoginMember(){
