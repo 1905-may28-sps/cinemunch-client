@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <h4 class="display-24">CineMunch Movie List</h4>
     <p class="lead">Choose your desired movie from the List</p>
@@ -42,4 +43,51 @@
                 <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
                      {{time.showDate}}  </li>
                 </ul>
+=======
+<div class="container">
+    <h4 class="display-24">CineMunch Movie List</h4>
+    <p class="lead">Choose your desired movie from the List</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+
+                <div class="column">
+                    <img [src]="crawlImg" alt="Crawl" style="width:90%" (click)="getShowtimes(2)">
+                    <div>
+                        <h4>Crawl</h4>
+                        <h6>1 HR 27 MIN I G</h6>
+                        <h6>Released July 12th, 2019</h6>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <img [src]="spidermanImg" alt="SpiderMan" style="width:90%" (click)="getShowtimes(1)">
+                    <div>
+                        <h4>SpiderMan-Far From Home</h4>
+                        <h6>2 HR 10 MIN I G</h6>
+                        <h6>Released July 2nd, 2019</h6>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <img [src]="toystoryImg" alt="ToyStory4" style="width:90%" (click)="getShowtimes(3)">
+
+                    <div>
+                        <h4>Toy-Story 4</h4>
+                        <h6>1 HR 40 MIN I G</h6>
+                        <h6>Released June 21st, 2019</h6>
+                    </div>
+                </div>
+            </div >
+            <div class = "textColor">
+                {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
+                
+                <li class="effect-shine" *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                     {{time.showDate}}  </li>
+                
+            </div>
+>>>>>>> refs/remotes/origin/master
             <br><br><br>

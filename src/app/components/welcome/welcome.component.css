@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .moveOverImg {
   position: absolute;
   top: 50%;
@@ -11,3 +12,26 @@
     text-transform: uppercase;
     font-family: helvetica;
 }
+=======
+.moveOverImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-body,.modal-header,.modal-footer,.modal-content {
+  background-color: #2c0e31 !important;
+  color: #fff !important;
+    text-transform: uppercase;
+    font-family: helvetica;
+}
+
+#exampleModalCenter > div > div > div.modal-header > button > span {
+  display: none;
+}
+
+#donotdisplay{
+  display:none;
+}
+>>>>>>> refs/remotes/origin/master
