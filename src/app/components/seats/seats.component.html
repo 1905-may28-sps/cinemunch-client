@@ -29,7 +29,7 @@
                     
                     <div tooltip="Seat : {{seatobj.seatLabel}} | Price : $ {{seatobj.price}}" placement="top"
                     [ngClass]="{ 'seat-item' : true , 'seat-available' : seatobj.status == 'available' ,'seat-booked' : seatobj.status == 'booked' ,'seat-unavailable' : seatobj.status == 'unavailable' }" 
-                     (click)="selectSeat(seatobj)" *ngIf="(seatobj.status == 'available' || seatobj.status == 'booked' )&& seatobj.seatLabel != ''">{{seatobj.seatId}}</div>
+                     (click)="selectSeat(seatobj)" *ngIf="(seatobj.status == 'available' || seatobj.status == 'booked' )&& seatobj.seatLabel != ''">{{seatobj.seatNo}}</div>
                      
                     <div tooltip="Seat not available" placement="top"
                     [ngClass]="{ 'seat-item' : true , 'seat-unavailable' : true }" 
