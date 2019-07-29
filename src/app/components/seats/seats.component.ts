@@ -136,7 +136,7 @@ private seatmap = [];
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatNo"] = "0"+seatNoCounter; }
+                { seatObj["seatNo"] = ""+seatNoCounter; }
                 else { seatObj["seatNo"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
@@ -172,7 +172,10 @@ private seatmap = [];
     );
 
     }
-  selectSeat( seatObject : any )
+  
+  
+  
+    selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
     console.log("Selected Seat");
@@ -195,8 +198,10 @@ private seatmap = [];
         this.cart.seatstoStore.splice(seatIndex , 1);
         this.cart.totalamount -= seatObject.price;
       }
-      
+
     }
+    console.log(this.cart.totalamount); // Logging the total amount of chosen seats
+
   }
 
 
