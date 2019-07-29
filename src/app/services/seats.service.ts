@@ -11,9 +11,9 @@ export class SeatsService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'*'
-      // 'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
-      // 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization, Keep-Alive'
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization, Keep-Alive'
     })
   };
   
@@ -23,5 +23,10 @@ export class SeatsService {
 
   public getAllSeats(): Observable<Seats[]>{
     return this.http.get<Seats[]>(`${this.url}`, this.httpOptions);
+}
+
+public getSeatById(SeatId: number): Observable<Seats>{
+  console.log("inside seat array");
+  return this.http.get<Seats>(`${this.url}/${SeatId}`, this.httpOptions);
 }
 }

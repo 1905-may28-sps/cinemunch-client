@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { SeatsService } from 'src/app/services/seats.service';
 import { Seats } from 'src/app/models/seats';
+import { applySourceSpanToExpressionIfNeeded } from '@angular/compiler/src/output/output_ast';
 //import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
@@ -14,6 +15,9 @@ export class SeatsComponent implements OnInit {
 constructor(private seatsService : SeatsService, private router: Router) { }
 
 showTimeId = sessionStorage.getItem("showTimeId");
+movieName = sessionStorage.getItem("movieName");
+showDate= sessionStorage.getItem("showDate");
+// poster = sessionStorage.getItem("poster");
 
 seats: Seats[] = [];
 seat: Seats = new Seats();
@@ -110,7 +114,7 @@ private seatmap = [];
             var seatValArr = map_element.layout.split('');
             if( this.seatChartConfig.newSeatNoForRow )
             {
-              seatNoCounter = 1; //Reset the seat label counter for new row
+              seatNoCounter = 20; //Reset the seat label counter for new row
             }
             var totalItemCounter = 1;
             seatValArr.forEach(item => {
@@ -162,8 +166,15 @@ private seatmap = [];
     );
 
     }
+
+    public getSeatByNo(seatId: number){
+    this.seatsService.getSeatById(seatId).subscribe(
+      data => {console.log(data);
+        this.seat = data;
+        console.log(data);}
+    );
   
-  
+    }
   
     selectSeat( seatObject : any )
   {

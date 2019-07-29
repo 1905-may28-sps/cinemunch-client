@@ -66,7 +66,7 @@
         <input type="password" id="password" (focus)="removeMessage()" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
       </div>
       <div class="modal-footer">
-        <strong><span style="color:red" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
+        <strong><span style="color:rgb(255,102,203)" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="addMember()">Sign Up!</button>
       </div>
@@ -90,9 +90,9 @@
           <input type="password" id="passwordLogin" (focus)="removeMessage()" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
       </div>
       <div class="modal-footer">
-        <strong><span style="color:red" *ngIf = "loginError">{{WrongUsernamePassword}}</span></strong>
+        <i><span style="color:rgb(255,102,203)" *ngIf = "loginError">{{WrongUsernamePassword}}</span></i>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="loginMember()"  data-dismiss="modal">Sign In!</button>
+        <button type="button" class="btn btn-dark" (click)="loginMember()"  data-dismiss="modal">Sign In!</button>
       </div>
     </div>
   </div>
