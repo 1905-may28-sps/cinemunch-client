@@ -64,11 +64,19 @@
         <input type="text" id="username" (focus)="removeMessage()" [(ngModel)]="member.username" placeholder="Username" class="form-control col-12">
         <label for="password">Please Choose A Password:</label>
         <input type="password" id="password" (focus)="removeMessage()" [(ngModel)]="member.password" placeholder="Password" class="form-control col-12">
+        <label>Please Choose A Membership Type:</label>
+        <select id="mtype" [(ngModel)]="selectedOption">
+          <option *ngFor="let o of options">{{o.name}}</option>
+        </select>
+        <p *ngIf="selectedOption==='Guest'">Thank you for selecting {{selectedOption}} Membership.<br>
+        Your membership costs $0/month.<br>You do not have any perks.</p>
+        <p *ngIf="selectedOption==='Bronze'">Thank you for selecting {{selectedOption}} Membership.<br>YOur membership costs $10/month.<br>Your perks include:<br>a CineMunch pen.<br>autographed movie posters from Hollywood stars.</p>
+        <p *ngIf="selectedOption==='Gold'">Thank you for selecting {{selectedOption}} Membership.<br>Your membership costs $30/month.<br>Your perks include:<br>bronze membership.<br>attendance to a monthly gala where you hobnob with Hollywood stars.</p>
       </div>
       <div class="modal-footer">
         <strong><span style="color:red" *ngIf = "registerError">{{WrongOrNullRegistration}}</span></strong>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="addMember()">Sign Up!</button>
+        <button type="button" class="btn btn-secondary" (click)="removeMessage()" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addMember()">Sign Up!</button>
       </div>
     </div>
   </div>
@@ -91,8 +99,8 @@
       </div>
       <div class="modal-footer">
         <strong><span style="color:red" *ngIf = "loginError">{{WrongUsernamePassword}}</span></strong>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="loginMember()"  data-dismiss="modal">Sign In!</button>
+        <button type="button" class="btn btn-secondary" (click)="removeMessage()" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="loginMember()">Sign In!</button>
       </div>
     </div>
   </div>

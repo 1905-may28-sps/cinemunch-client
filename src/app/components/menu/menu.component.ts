@@ -35,10 +35,10 @@ export class MenuComponent implements OnInit {
 selectedMenu: Menu;
 onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
-  console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
-  sessionStorage.setItem("menuId", JSON.stringify(menus.menuId));
-  sessionStorage.setItem("mealName", JSON.stringify(menus.mealName));
-  sessionStorage.setItem("mealPrice", JSON.stringify(menus.mealPrice));
+  console.log(`selectedMenu = ${String(this.selectedMenu)}`);
+  sessionStorage.setItem("menuId", String(menus.menuId));
+  sessionStorage.setItem("mealName", String(menus.mealName));
+  sessionStorage.setItem("mealPrice", String(menus.mealPrice));
   
   this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
 }
