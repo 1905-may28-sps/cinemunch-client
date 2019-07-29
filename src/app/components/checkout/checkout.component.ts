@@ -9,7 +9,7 @@ import { MemberkeyService } from 'src/app/services/memberkey.service';
 
 
 export class CheckoutComponent implements OnInit {
-MemberName=this.memberkeyService.getMemberKey();
+MemberNames = this.memberkeyService.getMemberKey();
  
   constructor(private memberkeyService: MemberkeyService) { }
 
@@ -33,9 +33,8 @@ public calculateTotalPrice(totalamount: number, mealPrice: number){
    let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
    let total = Number(tax) + Number(totalamount) + Number(mealPrice); 
-   console.log("Total Price: $" + total);
-
    sessionStorage.setItem("total", JSON.stringify(total));
+   console.log("Total Price: $" + total);
    
    }
 
