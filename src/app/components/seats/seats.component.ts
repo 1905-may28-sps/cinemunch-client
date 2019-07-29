@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { SeatsService } from 'src/app/services/seats.service';
 import { Seats } from 'src/app/models/seats';
-import { ShowTime } from 'src/app/models/ShowTime';
+//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-seats',
@@ -12,6 +12,8 @@ import { ShowTime } from 'src/app/models/ShowTime';
 export class SeatsComponent implements OnInit {
 
 constructor(private seatsService : SeatsService, private router: Router) { }
+
+showTimeId = sessionStorage.getItem("showTimeId");
 
 seats: Seats[] = [];
 seat: Seats = new Seats();
@@ -37,16 +39,13 @@ private seatmap = [];
   // title = 'seat-chart-generator';
 
 
-  
-    
-    
+ 
 
   //   ngOnInit() {
   //     this.getSeats();
   //   }
   
-      
-   
+       
 
   
 
@@ -85,7 +84,7 @@ private seatmap = [];
   }
 
 
-
+ 
 
 
   public processSeatChart ( map_data : any[] )
@@ -137,8 +136,8 @@ private seatmap = [];
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatId"] = "0"+seatNoCounter; }
-                else { seatObj["seatId"] = ""+seatNoCounter; }
+                { seatObj["seatNo"] = ""+seatNoCounter; }
+                else { seatObj["seatNo"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
               }
@@ -173,9 +172,15 @@ private seatmap = [];
     );
 
     }
-  selectSeat( seatObject : any )
+  
+  
+  
+    selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
+    console.log("Selected Seat");
+    sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
+
     if(seatObject.status == "available")
     {
       seatObject.status = "booked";
@@ -193,8 +198,10 @@ private seatmap = [];
         this.cart.seatstoStore.splice(seatIndex , 1);
         this.cart.totalamount -= seatObject.price;
       }
-      
+
     }
+    console.log(this.cart.totalamount); // Logging the total amount of chosen seats
+
   }
 
 

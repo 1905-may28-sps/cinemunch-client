@@ -8,7 +8,9 @@ export class RegisterService {
 
   url = environment.movieAppUrl;
   reqHeaders = {
-    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    headers: new HttpHeaders({'Content-Type' : 'application/json',
+    'Access-Control-Allow-Origin':'*'
+  })
   };
 
   constructor(private http: HttpClient) { }
