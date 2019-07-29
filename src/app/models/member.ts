@@ -1,3 +1,5 @@
+import { MemType } from './memType';
+
 export class Member {
     id: number;
     firstName: string;
@@ -6,4 +8,5 @@ export class Member {
     email: string;
     username: string;
     password: string;
+    memType: MemType;
 }

@@ -8,10 +8,9 @@
 </div>
 
 <div>
-   <h3 *ngIf="!regFNLN"> {{regFNLN}}'s Order Receipt</h3>
-   <h3 *ngIf="logFNLN"> {{logFNLN}}'s Order Receipt</h3>
+   <h3> {{FNLN}}'s Order Receipt</h3>
    <ul>
-   <h3> {{MemberNames}}'s Order Receipt</h3>
+   <h3>  {{nameMem}} Membership for ${{costMem}}/month! </h3>
    <h3>  Movie Name: {{movieName}} </h3>
    <h3>  Date and ShowTime:  {{showDate}} </h3>
    <h3>  Seat Number: {{seatNo}} </h3>
@@ -19,6 +18,7 @@
    <h3>  Meal Name: {{mealName}} </h3>
    <h3>  Meal Price: $ {{mealPrice}} </h3>
    <h3>  Total: $ {{total}} </h3>
+   <!-- <h3> Total: $ {{totallog}} </h3> -->
  </ul> 
  </div>
 <div>
@@ -26,7 +26,7 @@
     <span id="spcbtwn"></span>
     <button type="button" class="btn btn-light">Submit Order</button>
 
-<h3> Would you like an Email receipt?</h3>
+<h3>Would you like an Email receipt?</h3>
 <h3>Share on Twitter!</h3>
 </div>
 </div>

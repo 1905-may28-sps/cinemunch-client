@@ -1,6 +1,4 @@
 import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
-import { MemberkeyService } from 'src/app/services/memberkey.service';
-import { randomFill } from 'crypto';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,13 +9,10 @@ import { Router } from '@angular/router';
 
 export class CheckoutComponent implements OnInit {
   
-regFNLN = localStorage.getItem("registered member first name") + " " + localStorage.getItem("registered member last name");
-logFNLN = localStorage.getItem("logged in member first name") + " " + localStorage.getItem("logged in member last name");
-
-// backToWelcome = 
-// MemberName =
-// ShowTime = localStorage.getItem("selectedMovieDate");
-// ShowTimeId=sessionStorage.getItem("showTimeId");
+FNLN = localStorage.getItem("member first name") + " " + localStorage.getItem("member last name");
+nameMem = localStorage.getItem("name membership type");
+costMem=localStorage.getItem("cost membership type");
+// costMem = localStorage.getItem("price of membership type");
 
   constructor(private router: Router) { }
 
@@ -31,7 +26,7 @@ logFNLN = localStorage.getItem("logged in member first name") + " " + localStora
   total = sessionStorage.getItem("total");
   
     ngOnInit(): void {
-    this.calculateTotalPrice (parseFloat(this.totalamount), parseFloat(this.mealPrice));
+    this.calculateTotalPrice (+this.totalamount, +this.mealPrice, +this.costMem);
   }
 
   logOut(){
@@ -42,14 +37,16 @@ logFNLN = localStorage.getItem("logged in member first name") + " " + localStora
     this.router.navigateByUrl('/welcome')
   }
 
-public calculateTotalPrice(totalamount: number, mealPrice: number){
-   let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
+public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: number){
+   let tax = Number(0.08885) * Number(totalamount + mealPrice + costMem);
+  //  let taxlog = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
-   let total = Number(tax) + Number(totalamount) + Number(mealPrice); 
-   console.log("Total Price: $" + total);
+   let totalT = tax + totalamount + mealPrice + costMem;
+  //  let totallog = Number(taxlog) + Number(totalamount) + Number(mealPrice);
+   console.log("Total Price: $" + totalT);
 
-   sessionStorage.setItem("total", JSON.stringify(total));
-   
+   sessionStorage.setItem("total", JSON.stringify(totalT));
+  //  sessionStorage.setItem("totallog", JSON.stringify(totallog));
    }
 
 

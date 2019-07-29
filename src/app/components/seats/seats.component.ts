@@ -170,7 +170,7 @@ private seatmap = [];
     console.log( "Seat to block: " , seatObject );
     console.log("Selected Seat");
     
-    sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
+    sessionStorage.setItem("seatNo", String(seatObject.seatNo));
 
     if(seatObject.status == "available")
     {
@@ -191,7 +191,7 @@ private seatmap = [];
         }
       }
       console.log("Total Amount: " + this.cart.totalamount);
-      sessionStorage.setItem("totalamount", JSON.stringify(this.cart.totalamount));
+      sessionStorage.setItem("totalamount", String(this.cart.totalamount));
         
   }
 
