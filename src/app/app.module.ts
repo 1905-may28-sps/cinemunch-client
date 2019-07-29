@@ -10,7 +10,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 
 import { MoviesService} from './services/movies.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {LOCAL_STORAGE, WebStorageService, StorageServiceModule} from 'angular-webstorage-service';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,7 +48,7 @@ import { MemberkeyService } from './services/memberkey.service';
     FormsModule, StorageServiceModule
 
   ],
-  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService, MemberkeyService ],
+  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService, MemberkeyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

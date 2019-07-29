@@ -6,6 +6,7 @@ import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
 import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
+//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-movies',
@@ -62,10 +63,13 @@ export class MoviesComponent implements OnInit {
   }
   selectedTimeslot(timeslot : showtimes){
     
-    console.log("Selected Timeslot : "+timeslot.showTimeId);
+    console.log("Selected Timeslot : "+ timeslot.showTimeId);
     sessionStorage.setItem("showTimeId", JSON.stringify(timeslot.showTimeId));
-     this.router.navigateByUrl('/seats');
-  }
+    sessionStorage.setItem("movieName", JSON.stringify(timeslot.movie.movieName));
+    sessionStorage.setItem("ticketPrice", JSON.stringify(timeslot.movie.ticketPrice));
+    sessionStorage.setItem("showDate", JSON.stringify(timeslot.showDate));
+    this.router.navigateByUrl('/seats');
+  } 
 
 }
 

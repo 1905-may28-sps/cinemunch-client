@@ -14,14 +14,11 @@ export class MenuComponent implements OnInit {
   menus: Menu[] = [];
   public data:any=[]
 
-
   imgSrc: String;
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private menuService: MenuService, private router:Router) { }
   
    seatNo = sessionStorage.getItem("seatNo");
-
-
 
   ngOnInit() {
     this.getMenus();
@@ -39,17 +36,21 @@ selectedMenu: Menu;
 onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
   console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
+  sessionStorage.setItem("menuId", JSON.stringify(menus.menuId));
+  sessionStorage.setItem("mealName", JSON.stringify(menus.mealName));
+  sessionStorage.setItem("mealPrice", JSON.stringify(menus.mealPrice));
+  
   this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
 }
 
 saveInLocal(menuKey,menus): void{
-  console.log('received= menuKey:' + menuKey + 'value' + menus);
+  console.log('recieved= menuKey:' + menuKey + 'value' + menus);
   this.storage.set(menuKey,menus);
   this.data[menuKey]= this.storage.get(menuKey)
 }
 /*
 getFromLocal(menuKey): void{
-  console.log('received= menuKey:' + menuKey);
+  console.log('recieved= menuKey:' + menuKey);
   this.data[menuKey]= this.storage.get(menuKey);
   console.log(this.data);
 }
