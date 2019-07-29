@@ -1,0 +1,16 @@
+#checkoutBody {
+    background-color: #2c0e31 !important;
+  color: #fff !important;
+    text-transform: uppercase;
+    font-family: helvetica;
+    padding: 70px;
+}
+
+ul
+{
+    list-style-type:none;
+}
+
+#spcbtwn{
+    padding-left: 20px;
+}
