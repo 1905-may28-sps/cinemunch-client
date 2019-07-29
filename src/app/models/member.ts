@@ -1,5 +1,4 @@
-import { Movies } from './movies';
-import { Menu } from './menu';
+import { MemType } from './memType';
 
 export class Member {
     id: number;
@@ -9,4 +8,5 @@ export class Member {
     email: string;
     username: string;
     password: string;
+    memType: MemType;
 }
