@@ -35,11 +35,12 @@
                         <h6>Released June 21st, 2019</h6>
                     </div>
                 </div>
-            </div>
-            
+            </div >
+            <div class = "textColor">
                 {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
-                <ul>
-                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                
+                <li class="effect-shine" *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
                      {{time.showDate}}  </li>
-                </ul>
+                
+            </div>
             <br><br><br>
