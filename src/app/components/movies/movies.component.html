@@ -39,7 +39,7 @@
             
                 {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
                 <ul>
-                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                <li class="effect-shine" *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
                      {{time.showDate}}  </li>
                 </ul>
             <br><br><br>

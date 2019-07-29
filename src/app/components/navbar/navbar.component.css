@@ -13,3 +13,49 @@
 .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+
+.lightning-effect:before {
+    content: "";
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: -50px;
+    bottom: 0;
+    z-index: 9;
+    background: -webkit-gradient(
+     linear,
+     left top,
+     right top,
+     from(rgba(255, 255, 255, 0.2)),
+     color-stop(50%, #fff),
+     to(rgba(255, 255, 255, 0.2))
+    );
+    background: linear-gradient(
+     to right,
+     rgba(255, 255, 255, 0.2) 0%,
+     #fff 50%,
+     rgba(255, 255, 255, 0.2) 100%
+    );
+   }
+  /*effect-underline*/
+.effect-underline:after {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-top: 10px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+}
+
+.effect-underline:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}

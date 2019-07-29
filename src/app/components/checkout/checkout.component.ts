@@ -10,24 +10,13 @@ import { MemberkeyService } from 'src/app/services/memberkey.service';
 
 
 export class CheckoutComponent implements OnInit {
-<<<<<<< HEAD
-MemberName=this.memberkeyService.getMemberKey();
-=======
   MemberName=this.memberkeyService.getMemberKey();
 
->>>>>>> tiff
   constructor(private memberkeyService: MemberkeyService) { 
 
   }
 
   ngOnInit() {
-<<<<<<< HEAD
-    
-    // console.log("this is the get memberkey again" + this.memberkeyService.getMemberKey());
-    // this.MemberName = this.memberkeyService.getMemberKey();
-=======
-
->>>>>>> tiff
   }
 
 retrieveLoginMember(){
