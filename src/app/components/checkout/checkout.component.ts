@@ -9,7 +9,7 @@ import { MemberkeyService } from 'src/app/services/memberkey.service';
 
 
 export class CheckoutComponent implements OnInit {
-MemberName=this.memberkeyService.getMemberKey();
+  MemberNames=this.memberkeyService.getMemberKey();
  
   constructor(private memberkeyService: MemberkeyService) { }
 
