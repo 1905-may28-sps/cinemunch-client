@@ -45,7 +45,8 @@ logFNLN = localStorage.getItem("logged in member first name") + " " + localStora
 public calculateTotalPrice(totalamount: number, mealPrice: number){
    let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
-   let total = Number(tax) + Number(totalamount) + Number(mealPrice); 
+   let total = 0;
+   total = Number(tax) + Number(totalamount) + Number(mealPrice); 
    sessionStorage.setItem("total", JSON.stringify(total));
    console.log("Total Price: $" + total);
    
