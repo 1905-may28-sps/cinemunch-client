@@ -24,7 +24,7 @@ costMem=localStorage.getItem("cost membership type");
   mealName = sessionStorage.getItem("mealName");
   mealPrice = sessionStorage.getItem("mealPrice");
   total = sessionStorage.getItem("total");
-  
+
     ngOnInit(): void {
     this.calculateTotalPrice (+this.totalamount, +this.mealPrice, +this.costMem);
   }
@@ -41,12 +41,15 @@ public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: numb
    let tax = Number(0.08885) * Number(totalamount + mealPrice + costMem);
   //  let taxlog = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
-   let totalT = tax + totalamount + mealPrice + costMem;
-  //  let totallog = Number(taxlog) + Number(totalamount) + Number(mealPrice);
-   console.log("Total Price: $" + totalT);
 
-   sessionStorage.setItem("total", JSON.stringify(totalT));
+   let total = tax + totalamount + mealPrice + costMem;
+  //  let totallog = Number(taxlog) + Number(totalamount) + Number(mealPrice);
+   console.log("Total Price: $" + total);
+
+   sessionStorage.setItem("total", JSON.stringify(total));
   //  sessionStorage.setItem("totallog", JSON.stringify(totallog));
+
+   console.log("Total Price: $" + total);
    }
 
 
