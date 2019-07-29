@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
 import { MemberkeyService } from 'src/app/services/memberkey.service';
+import { randomFill } from 'crypto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -7,11 +9,17 @@ import { MemberkeyService } from 'src/app/services/memberkey.service';
   styleUrls: ['./checkout.component.css']
 })
 
-
 export class CheckoutComponent implements OnInit {
-  MemberNames=this.memberkeyService.getMemberKey();
- 
-  constructor(private memberkeyService: MemberkeyService) { }
+  
+regFNLN = localStorage.getItem("registered member first name") + " " + localStorage.getItem("registered member last name");
+logFNLN = localStorage.getItem("logged in member first name") + " " + localStorage.getItem("logged in member last name");
+
+// backToWelcome = 
+// MemberName =
+// ShowTime = localStorage.getItem("selectedMovieDate");
+// ShowTimeId=sessionStorage.getItem("showTimeId");
+
+  constructor(private router: Router) { }
 
   movieName = sessionStorage.getItem("movieName");
   showDate = sessionStorage.getItem("showDate");
@@ -26,9 +34,14 @@ export class CheckoutComponent implements OnInit {
     this.calculateTotalPrice (parseFloat(this.totalamount), parseFloat(this.mealPrice));
   }
 
-retrieveLoginMember(){
-  console.log("this is the get memberkey again" + this.memberkeyService.getMemberKey());
-}
+  logOut(){
+    localStorage.clear();
+  }
+
+  backToWelcome(){
+    this.router.navigateByUrl('/welcome')
+  }
+
 public calculateTotalPrice(totalamount: number, mealPrice: number){
    let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
@@ -38,5 +51,6 @@ public calculateTotalPrice(totalamount: number, mealPrice: number){
    sessionStorage.setItem("total", JSON.stringify(total));
    
    }
+
 
 }
