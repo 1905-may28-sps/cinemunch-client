@@ -59,10 +59,10 @@ export class MoviesComponent implements OnInit {
   selectedTimeslot(timeslot : showtimes){
     
     console.log("Selected Timeslot : "+ timeslot.showTimeId);
-    sessionStorage.setItem("showTimeId", JSON.stringify(timeslot.showTimeId));
-    sessionStorage.setItem("movieName", JSON.stringify(timeslot.movie.movieName));
-    sessionStorage.setItem("ticketPrice", JSON.stringify(timeslot.movie.ticketPrice));
-    sessionStorage.setItem("showDate", JSON.stringify(timeslot.showDate));
+    sessionStorage.setItem("showTimeId", String(timeslot.showTimeId));
+    sessionStorage.setItem("movieName", String(timeslot.movie.movieName));
+    sessionStorage.setItem("ticketPrice", String(timeslot.movie.ticketPrice));
+    sessionStorage.setItem("showDate", String(timeslot.showDate));
     this.router.navigateByUrl('/seats');
   }
 

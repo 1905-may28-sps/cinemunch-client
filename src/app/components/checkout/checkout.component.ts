@@ -49,7 +49,6 @@ public calculateTotalPrice(totalamount: number, mealPrice: number){
    total = Number(tax) + Number(totalamount) + Number(mealPrice); 
    sessionStorage.setItem("total", JSON.stringify(total));
    console.log("Total Price: $" + total);
-   
    }
 
 
