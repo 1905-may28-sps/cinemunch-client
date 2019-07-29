@@ -6,10 +6,7 @@ import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
 import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
-<<<<<<< HEAD
 //import { ShowTime } from 'src/app/models/ShowTime';
-=======
->>>>>>> fcf4e25f40ad271e861e02ed2cda0ff507444e6e
 
 @Component({
   selector: 'app-movies',
@@ -57,24 +54,21 @@ export class MoviesComponent implements OnInit {
       data => {console.log(data);
       this.timeslot = data;
       console.log(data);
-    this.storage.set(this.selectedMovieName, data);
-        this.storage.set(this.selectedMoviePrice, this.timeslot);
-        this.storage.set(this.selectedMovieDate, this.timeslot);
-        console.log("this is the selected movie, price, and showtime " + this.storage.get(this.selectedMovieName + " on " + this.selectedMovieDate + " for " + this.selectedMoviePrice));
+    
     }
     )
   }
-<<<<<<< HEAD
   selectedTimeslot(timeslot : showtimes){
     
-    console.log("Selected Timeslot : "+timeslot.showTimeId);
+    console.log("Selected Timeslot : "+ timeslot.showTimeId);
     sessionStorage.setItem("showTimeId", JSON.stringify(timeslot.showTimeId));
+    localStorage.setItem("selectedMovieDate", timeslot.showDate);
+    // this.storage.set(this.selectedMovieName, timeslot.movie.movieName);
+    // this.storage.set(this.selectedMoviePrice, timeslot.movie.ticketPrice);
+    // this.storage.set(this.selectedMovieDate, timeslot.showDate);
+    console.log("this is the selected movie, price, and showtime " + this.storage.get(this.selectedMovieName + " on " + this.selectedMovieDate + " for " + this.selectedMoviePrice));
+
      this.router.navigateByUrl('/seats');
-=======
-  selectedTimeslot(timeslot: showtimes){
-    
-    this.router.navigateByUrl('/seats');
->>>>>>> fcf4e25f40ad271e861e02ed2cda0ff507444e6e
   }
 
 

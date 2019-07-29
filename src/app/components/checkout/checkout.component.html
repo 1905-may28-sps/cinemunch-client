@@ -1,5 +1,6 @@
+<div id="checkoutBody">
 <div id="moviePoster" >
-    <img src="../../../assets/images/spiderman.jpg" width="250" height="200">
+    <img src="../../../assets/images/spiderman1.jpg" width="250" height="200">
 </div>
 
 <div>
@@ -8,15 +9,22 @@
 
 <div>
 
-   <h3> {{MemberName}}'s Order Receipt</h3>
+   <h3 *ngIf="!regFNLN"> {{regFNLN}}'s Order Receipt</h3>
+   <h3 *ngIf="logFNLN"> {{logFNLN}}'s Order Receipt</h3>
    <ul>
        <li>Dummy Data Here: MOVIE </li>
-       <li>Dummy Data Here: DATE AND SHOWTIME </li>
+       <li>{{ShowTime}}: DATE AND SHOWTIME </li>
        <li>Dummy Data Here: SEAT SELECTION </li>
        <li>Dummy Data Here: FOOD ORDER</li>
        <li>Dummy Data Here: TOTAL PRICE: $ </li>
 
    </ul>
 </div>
-<h3> Would you like an Email receipt</h3>
-<h3>Share on Twitter!</h3>
+<div>
+    <button type="button" (click)="logOut(); backToWelcome()" class="btn btn-warning">Cancel Order</button>
+    <span id="spcbtwn"></span>
+    <button type="button" class="btn btn-light">Submit Order</button>
+
+<h3>Share on Twitter! Would you like an Email receipt</h3>
+</div>
+</div>
