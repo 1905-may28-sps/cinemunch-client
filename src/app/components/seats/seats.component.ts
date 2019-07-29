@@ -46,10 +46,6 @@ private seatmap = [];
   //   }
   
        
-
-  
-
-    
     ngOnInit(): void {
     this.getSeats();
     this.seatConfig = [
@@ -83,14 +79,8 @@ private seatmap = [];
     // this.processSeatChart(this.seats);
   }
 
-
- 
-
-
   public processSeatChart ( map_data : any[] )
   {
-
-
       if( map_data.length > 0 )
       {
         var seatNoCounter = 1;
@@ -136,7 +126,7 @@ private seatmap = [];
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatNo"] = "0"+seatNoCounter; }
+                { seatObj["seatNo"] = ""+seatNoCounter; }
                 else { seatObj["seatNo"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
@@ -172,10 +162,14 @@ private seatmap = [];
     );
 
     }
-  selectSeat( seatObject : any )
+  
+  
+  
+    selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
     console.log("Selected Seat");
+    
     sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
 
     if(seatObject.status == "available")
@@ -194,15 +188,14 @@ private seatmap = [];
         this.cart.selectedSeats.splice(seatIndex , 1);
         this.cart.seatstoStore.splice(seatIndex , 1);
         this.cart.totalamount -= seatObject.price;
+        }
       }
-      
-    }
+      console.log("Total Amount: " + this.cart.totalamount);
+      sessionStorage.setItem("totalamount", JSON.stringify(this.cart.totalamount));
+        
   }
 
-
-
-
-  blockSeats(seatsToBlock : string)
+ blockSeats(seatsToBlock : string)
   {
     if(seatsToBlock != "")
     {

@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { MemberkeyService } from 'src/app/services/memberkey.service';
 
 
-
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
