@@ -33,6 +33,7 @@ export class MenuComponent implements OnInit {
     );
 }
 selectedMenu: Menu;
+
 onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
   console.log(`selectedMenu = ${String(this.selectedMenu)}`);
@@ -55,6 +56,9 @@ getFromLocal(menuKey): void{
   console.log(this.data);
 }
 */
+public doNotIncludeMealPrice(){
+  sessionStorage.setItem("notHungry", "n");
+ }
 
 differentRoute(){
   this.router.navigateByUrl('/checkout')
