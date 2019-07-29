@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
   mealName = sessionStorage.getItem("mealName");
   mealPrice = sessionStorage.getItem("mealPrice");
   total = sessionStorage.getItem("total");
-  
+
     ngOnInit(): void {
     this.calculateTotalPrice (parseFloat(this.totalamount), parseFloat(this.mealPrice));
   }
@@ -33,9 +33,9 @@ public calculateTotalPrice(totalamount: number, mealPrice: number){
    let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
    let total = Number(tax) + Number(totalamount) + Number(mealPrice); 
+   sessionStorage.setItem("total", JSON.stringify(total));
    console.log("Total Price: $" + total);
 
-   sessionStorage.setItem("total", JSON.stringify(total));
    
    }
 
