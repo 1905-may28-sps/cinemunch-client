@@ -16,9 +16,9 @@ export class CheckoutService {
   constructor(private http: HttpClient) { }
 
   
-  public submitOrder(orders : Orders) {
-    return this.http.post<Orders>(`${this.url}/order`, orders, this.reqHeaders)
-  }
+  // public submitOrder(orders : Orders) {
+  //   return this.http.post<Orders>(`${this.url}/order`, orders, this.reqHeaders)
+  // }
 
   public cancelOrder(){
     return null;
