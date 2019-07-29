@@ -21,7 +21,6 @@ export class MenuComponent implements OnInit {
   
    seatNo = sessionStorage.getItem("seatNo");
 
-  seatNo = sessionStorage.getItem("seatNo");
 
 
   ngOnInit() {
