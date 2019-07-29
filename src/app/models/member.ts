@@ -1,6 +1,3 @@
-import { Movies } from './movies';
-import { Menu } from './menu';
-
 export class Member {
     id: number;
     firstName: string;
