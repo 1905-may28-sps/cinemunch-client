@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   menus: Menu[] = [];
   public data:any=[]
 
-
   imgSrc: String;
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private menuService: MenuService, private router:Router) { }
@@ -37,6 +36,10 @@ selectedMenu: Menu;
 onSelect(menus: Menu): void {
   this.selectedMenu =  menus;
   console.log(`selectedMenu = ${JSON.stringify(this.selectedMenu)}`);
+  sessionStorage.setItem("menuId", JSON.stringify(menus.menuId));
+  sessionStorage.setItem("mealName", JSON.stringify(menus.mealName));
+  sessionStorage.setItem("mealPrice", JSON.stringify(menus.mealPrice));
+  
   this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
 }
 
