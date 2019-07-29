@@ -36,6 +36,7 @@ logFNLN = localStorage.getItem("logged in member first name") + " " + localStora
 
   logOut(){
     localStorage.clear();
+    sessionStorage.clear();
   }
 
   backToWelcome(){
@@ -43,6 +44,7 @@ logFNLN = localStorage.getItem("logged in member first name") + " " + localStora
   }
 
 public calculateTotalPrice(totalamount: number, mealPrice: number){
+  console.log("Meal Price: "+mealPrice);
    let tax = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
    console.log("Tax: $" + tax);
    let total = Number(tax) + Number(totalamount) + Number(mealPrice); 
