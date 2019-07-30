@@ -55,19 +55,19 @@ private seatmap = [];
         "seat_price": 18.50,
         "seat_map": [
           {
-            "seat_label": this.seats,
+            "seat_label": "1",
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": this.seats,
+            "seat_label": "2",
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": this.seats,
+            "seat_label": "3",
             "layout": "gg__gg__gg"
           },
           {
-            "seat_label": this.seats,
+            "seat_label": "4",
             "layout": "gg__gg__gg"
           }
           
@@ -77,6 +77,8 @@ private seatmap = [];
   
     this.processSeatChart(this.seatConfig)
     // this.processSeatChart(this.seats);
+    this.blockSeats("1_1,3_2");
+
   }
 
   public processSeatChart ( map_data : any[] )
@@ -92,17 +94,17 @@ private seatmap = [];
           row_label = "Row "+item_map[0].seat_label + " - ";
           if( item_map[ item_map.length - 1].seat_label != " " )
           {
-            row_label += item_map[ item_map.length - 1].seatsmovie;
+            row_label += item_map[ item_map.length - 1].seat_label;
           }
           else
           {
-            row_label += item_map[ item_map.length - 2].seatsmovie;
+            row_label += item_map[ item_map.length - 2].seat_label;
           }
           row_label += " : Dollars. " + map_data[__counter].seat_price;
           
           item_map.forEach(map_element => {
             var mapObj = {
-              "seatRowLabel" : map_element.seatsmovie,
+              "seatRowLabel" : map_element.seat_label,
               "seats" : [],
               "seatPricingInformation" : row_label
             };
@@ -115,8 +117,8 @@ private seatmap = [];
             var totalItemCounter = 1;
             seatValArr.forEach(item => {
               var seatObj = {
-                "key" : this.seats,
-                // "key" : map_element.seat_label+"_"+totalItemCounter,
+                // "key" : this.seats,
+                "key" : map_element.seat_label+"_"+totalItemCounter,
                 "price" : map_data[__counter]["seat_price"],
                 "status" : "available"
                 
