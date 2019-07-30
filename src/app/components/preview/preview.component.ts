@@ -16,5 +16,6 @@ export class PreviewComponent implements OnInit {
   differentRoute(){
     this.router.navigateByUrl('/welcome')
   }
+  
 
 }
