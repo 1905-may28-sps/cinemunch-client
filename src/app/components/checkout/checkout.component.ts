@@ -2,6 +2,7 @@ import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersistServiceService } from 'src/app/services/persist-service.service';
 import { OrderKey } from 'src/app/models/orderkey';
+import { Component } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { ShowTime } from 'src/app/models/ShowTime';
 import { Menu } from 'src/app/models/menu';
