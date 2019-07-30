@@ -24,6 +24,8 @@ costMem=localStorage.getItem("cost membership type");
   mealName = sessionStorage.getItem("mealName");
   mealPrice = sessionStorage.getItem("mealPrice");
   total = sessionStorage.getItem("total");
+  user = localStorage.getItem("user");
+  notHungry = sessionStorage.getItem("notHungry");
 
     ngOnInit(): void {
     this.calculateTotalPrice (+this.totalamount, +this.mealPrice, +this.costMem);
@@ -37,20 +39,30 @@ costMem=localStorage.getItem("cost membership type");
     this.router.navigateByUrl('/welcome')
   }
 
-public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: number){
-   let tax = Number(0.08885) * Number(totalamount + mealPrice + costMem);
-  //  let taxlog = 0.08885 * ((Number(totalamount)) + (Number(mealPrice)));
-   console.log("Tax: $" + tax);
-
-   let total = tax + totalamount + mealPrice + costMem;
-  //  let totallog = Number(taxlog) + Number(totalamount) + Number(mealPrice);
-   console.log("Total Price: $" + total);
-
-   sessionStorage.setItem("total", JSON.stringify(total));
-  //  sessionStorage.setItem("totallog", JSON.stringify(totallog));
-
-   console.log("Total Price: $" + total);
-   }
+  public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: number){
+    let tax = Number(0.08885) * Number(totalamount + mealPrice + costMem);
+   sessionStorage.setItem("Tax", JSON.stringify(tax));
+    console.log("Tax: $" + tax);
+      if (this.user=="r"){
+        var Total = tax + totalamount + mealPrice + costMem;
+       console.log("new user with meal and membership and ticket price" + Total);
+       }
+        else if(this.user=="l"){
+         var Total=tax + totalamount + mealPrice;
+         console.log("logged user with meal and ticket price" + Total);
+       }
+     else if (this.notHungry == "n" && this.user=="l"){
+         var Total=tax + totalamount;
+         console.log("logged user with ticket price" + Total);
+        }
+     else if (this.notHungry == "n" && this.user =="r" ){
+         var Total = tax + totalamount + costMem;
+         console.log("new user with membership and ticket price" + Total);
+        }
+    console.log("Total Price: $" + Total);
+    sessionStorage.setItem("total", JSON.stringify(Total));
+    }
+  
 
 
 }

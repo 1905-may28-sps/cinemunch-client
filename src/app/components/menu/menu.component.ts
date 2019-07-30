@@ -39,7 +39,7 @@ onSelect(menus: Menu): void {
   sessionStorage.setItem("menuId", String(menus.menuId));
   sessionStorage.setItem("mealName", String(menus.mealName));
   sessionStorage.setItem("mealPrice", String(menus.mealPrice));
-  
+    
   this.imgSrc=`./../../assets/images/food-${menus.menuId}.jpg`;
 }
 
@@ -55,6 +55,10 @@ getFromLocal(menuKey): void{
   console.log(this.data);
 }
 */
+
+public doNotIncludeMealPrice(){
+  sessionStorage.setItem("notHungry", "n");
+}
 
 differentRoute(){
   this.router.navigateByUrl('/checkout')
