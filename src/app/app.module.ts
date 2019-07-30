@@ -26,6 +26,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MovieAndTimeslotService } from './services/movie-and-timeslot.service';
 import { ShowtimesService } from './services/showtimes.service';
 import { MemberkeyService } from './services/memberkey.service';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { MemberkeyService } from './services/memberkey.service';
     SeatsComponent,
     MoviesComponent,
     WelcomeComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AboutusComponent,
+    PreviewComponent
     
     
   ],

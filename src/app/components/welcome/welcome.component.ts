@@ -1,10 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { RegisterService } from 'src/app/services/register.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import { MemberkeyService } from 'src/app/services/memberkey.service';
+import { MemType } from 'src/app/models/memType';
 
 
 @Component({
@@ -15,11 +14,17 @@ import { MemberkeyService } from 'src/app/services/memberkey.service';
 
 export class WelcomeComponent implements OnInit {
 //cinemaImg: string;
+selectedOption: string;
 
-loggedIn="logged in Member";
-registeredIn="registered Member";
+options = [
+{ name: "Guest", value: 1 },
+{ name: "Bronze", value: 2 },
+{ name: "Gold", value: 3 }
+]
+
 WrongUsernamePassword = 'Wrong Username and/or Password. Please try again.';
 loginError;
+datadismiss='true';
 WrongOrNullRegistration = 'Wrong Registration Details. Please try again.';
 registerError;
 removeMessage(){
@@ -29,8 +34,8 @@ removeMessage(){
 
 member: Member = new Member();
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private registerService: RegisterService, private loginService: LoginService, private router: Router, private memberkeyService: MemberkeyService) {
-  //this.cinemaImg = './assets/images/cinema.jpg';
+  constructor(private registerService: RegisterService, private loginService: LoginService, private router: Router) {
+
    }
 
   ngOnInit() {
@@ -38,24 +43,34 @@ member: Member = new Member();
 
   addMember(){
     console.log(this.member);
-
+    let memType = new MemType();
     // let type = new MembershipType();
     // type.membershipTypeId = 1;
     // this.member.membershipType = type;
+
+    if(this.selectedOption=="Guest"){
+      memType.memTypeId = 1;
+      this.member.memType = memType;}
+      else if(this.selectedOption=="Bronze"){
+      memType.memTypeId = 2;
+      this.member.memType = memType;}
+      else if(this.selectedOption=="Gold"){
+      memType.memTypeId = 3;
+      this.member.memType = memType;}
 
     this.registerService.addMember(this.member).subscribe(
       resp => {
         console.log(resp);
 
-        this.storage.set(this.registeredIn, resp.firstName + " " + resp.lastName);
-
-        console.log("this is the registered member " + this.storage.get(this.registeredIn));
-        this.memberkeyService.setMemberKey(this.storage.get(this.registeredIn));
+        localStorage.setItem("member first name", resp.firstName);
+        localStorage.setItem("member last name", resp.lastName);
+        localStorage.setItem("name membership type", String(resp.memType.memTypeName));
+        localStorage.setItem("cost membership type", String(resp.memType.memTypePrice));
+        localStorage.setItem("user", "r");
+        localStorage.setItem("member Id", String(resp.id));
 
         this.router.navigateByUrl('/movies');
-        document.body.classList.remove('modal-open');
-        
-        // document.querySelector('body > div').classList.remove('modal');
+
       },
       error=>{
         this.registerError = true;
@@ -69,15 +84,16 @@ member: Member = new Member();
     this.loginService.loginMember(this.member).subscribe(
       resp => {
         console.log(resp);
-        this.storage.set(this.loggedIn, resp.firstName + " " + resp.lastName);
 
-        console.log("this is the logged in member " + this.storage.get(this.loggedIn));
-        this.memberkeyService.setMemberKey(this.storage.get(this.loggedIn));
-        console.log("this is the get member key" + this.memberkeyService.getMemberKey());
+        localStorage.setItem("member first name", resp.firstName);
+        localStorage.setItem("member last name", resp.lastName);
+        localStorage.setItem("name membership type", String(resp.memType.memTypeName));
+        localStorage.setItem("cost membership type", String(resp.memType.memTypePrice));
+        localStorage.setItem("user", "l");
+        localStorage.setItem("member Id", String(resp.id));
 
         this.router.navigateByUrl('/movies');
-        console.log("after movies loads" + this.memberkeyService.getMemberKey());
-        document.querySelector('body > div').classList.remove('modal-backdrop');
+
       },
       error=>{
         this.loginError = true;

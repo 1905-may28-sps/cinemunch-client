@@ -5,8 +5,6 @@ import { MovieAndTimeslotService } from 'src/app/services/movie-and-timeslot.ser
 import { movieAndTimeslot } from 'src/app/models/movieAndTimeslot';
 import { Router } from '@angular/router';
 import { showtimes } from 'src/app/models/showtimes';
-import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
-//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-movies',
@@ -26,7 +24,7 @@ export class MoviesComponent implements OnInit {
   selectedMoviePrice="Ticket Price to See Selected Movie";
   selectedMovieDate="Date and Time of Selected Movie Showing";
 
-  constructor (@Inject(LOCAL_STORAGE) private storage: WebStorageService, private _moviesService: MoviesService, private _timeslotService: MovieAndTimeslotService, private router: Router){
+  constructor (private _moviesService: MoviesService, private _timeslotService: MovieAndTimeslotService, private router: Router){
 
   this.crawlImg = './assets/images/crawl.jpg';
   this.spidermanImg = './assets/images/spiderman1.jpg';
@@ -54,22 +52,20 @@ export class MoviesComponent implements OnInit {
       data => {console.log(data);
       this.timeslot = data;
       console.log(data);
-    this.storage.set(this.selectedMovieName, data);
-        this.storage.set(this.selectedMoviePrice, this.timeslot);
-        this.storage.set(this.selectedMovieDate, this.timeslot);
-        console.log("this is the selected movie, price, and showtime " + this.storage.get(this.selectedMovieName + " on " + this.selectedMovieDate + " for " + this.selectedMoviePrice));
+    
     }
-    )
+    );
   }
   selectedTimeslot(timeslot : showtimes){
     
     console.log("Selected Timeslot : "+ timeslot.showTimeId);
-    sessionStorage.setItem("showTimeId", JSON.stringify(timeslot.showTimeId));
-    sessionStorage.setItem("movieName", JSON.stringify(timeslot.movie.movieName));
-    sessionStorage.setItem("ticketPrice", JSON.stringify(timeslot.movie.ticketPrice));
-    sessionStorage.setItem("showDate", JSON.stringify(timeslot.showDate));
+    sessionStorage.setItem("showTimeId", String(timeslot.showTimeId));
+    sessionStorage.setItem("movieName", String(timeslot.movie.movieName));
+    sessionStorage.setItem("ticketPrice", String(timeslot.movie.ticketPrice));
+    sessionStorage.setItem("showDate", String(timeslot.showDate));
+    sessionStorage.setItem("movie id", String(timeslot.movie.movieid));
     this.router.navigateByUrl('/seats');
-  } 
+  }
 
 }
 
