@@ -60,6 +60,7 @@ export class MoviesComponent implements OnInit {
     
     console.log("Selected Timeslot : "+ timeslot.showTimeId);
     sessionStorage.setItem("showTimeId", String(timeslot.showTimeId));
+    sessionStorage.setItem("movie id", String(timeslot.movie.movieid));
     sessionStorage.setItem("movieName", String(timeslot.movie.movieName));
     sessionStorage.setItem("ticketPrice", String(timeslot.movie.ticketPrice));
     sessionStorage.setItem("showDate", String(timeslot.showDate));
