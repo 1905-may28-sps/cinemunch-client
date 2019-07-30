@@ -18,4 +18,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  twitter(){
+    window.location.href='http://www.twitter.com/';
+
+  }
+  facebook(){
+    window.location.href='http://www.facebook.com';
+  }
+
+  insta(){
+    window.location.href='http://www.instagram.com'
+  }
 }

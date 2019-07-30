@@ -14,6 +14,8 @@ export class SeatsComponent implements OnInit {
 constructor(private seatsService : SeatsService, private router: Router) { }
 
 showTimeId = sessionStorage.getItem("showTimeId");
+movieName = sessionStorage.getItem("movieName");
+showDate = sessionStorage.getItem("showDate")
 
 seats: Seats[] = [];
 seat: Seats = new Seats();
