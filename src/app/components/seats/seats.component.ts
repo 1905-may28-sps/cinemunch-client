@@ -14,6 +14,8 @@ export class SeatsComponent implements OnInit {
 constructor(private seatsService : SeatsService, private router: Router) { }
 
 showTimeId = sessionStorage.getItem("showTimeId");
+movieName = sessionStorage.getItem("movieName");
+showDate = sessionStorage.getItem("showDate")
 
 seats: Seats[] = [];
 seat: Seats = new Seats();
@@ -172,7 +174,7 @@ private seatmap = [];
     console.log( "Seat to block: " , seatObject );
     console.log("Selected Seat");
     
-    sessionStorage.setItem("seatNo", String(seatObject.seatNo));
+    sessionStorage.setItem("seatNo", JSON.stringify(seatObject.seatNo));
 
     if(seatObject.status == "available")
     {
@@ -193,7 +195,7 @@ private seatmap = [];
         }
       }
       console.log("Total Amount: " + this.cart.totalamount);
-      sessionStorage.setItem("totalamount", String(this.cart.totalamount));
+      sessionStorage.setItem("totalamount", JSON.stringify(this.cart.totalamount));
         
   }
 
