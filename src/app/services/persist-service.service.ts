@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Orders } from '../models/orderkey';
+import { Orders } from '../models/orders';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { OrderKey} from '../models/orderkey'
 
 @Injectable()
 export class PersistServiceService {
@@ -15,8 +16,8 @@ export class PersistServiceService {
 
   constructor(private http: HttpClient) { }
 
-  public persistData(orders : Orders){
-    return this.http.post<Orders>(`${this.url}/orderkey`, orders, this.reqHeaders)
+  public persistData(orderkey : OrderKey){
+    return this.http.post<OrderKey>(`${this.url}/orderkey`, orderkey, this.reqHeaders)
   }
 
 }

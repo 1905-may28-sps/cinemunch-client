@@ -1,73 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
-import { Router } from '@angular/router';
-
-@Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
-})
-
-export class CheckoutComponent implements OnInit {
-  
-FNLN = localStorage.getItem("member first name") + " " + localStorage.getItem("member last name");
-nameMem = localStorage.getItem("name membership type");
-costMem=localStorage.getItem("cost membership type");
-// costMem = localStorage.getItem("price of membership type");
-
-  constructor(private router: Router) { }
-
-  movieName = sessionStorage.getItem("movieName");
-  showDate = sessionStorage.getItem("showDate");
-  seatNo = sessionStorage.getItem("seatNo");
-  totalamount = sessionStorage.getItem("totalamount");
-  menuId = sessionStorage.getItem("menuId");
-  mealName = sessionStorage.getItem("mealName");
-  mealPrice = sessionStorage.getItem("mealPrice");
-  total = sessionStorage.getItem("total");
-  user = localStorage.getItem("user");
-  notHungry = sessionStorage.getItem("notHungry");
-
-    ngOnInit(): void {
-    this.calculateTotalPrice (+this.totalamount, +this.mealPrice, +this.costMem);
-  }
-
-  logOut(){
-    localStorage.clear();
-  }
-
-  backToWelcome(){
-    this.router.navigateByUrl('/welcome')
-  }
-
-  public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: number){
-    let tax = Number(0.08885) * Number(totalamount + mealPrice + costMem);
-   sessionStorage.setItem("Tax", JSON.stringify(tax));
-    console.log("Tax: $" + tax);
-      if (this.user=="r"){
-        var Total = tax + totalamount + mealPrice + costMem;
-       console.log("new user with meal and membership and ticket price" + Total);
-       }
-        else if(this.user=="l"){
-         var Total=tax + totalamount + mealPrice;
-         console.log("logged user with meal and ticket price" + Total);
-       }
-     else if (this.notHungry == "n" && this.user=="l"){
-         var Total=tax + totalamount;
-         console.log("logged user with ticket price" + Total);
-        }
-     else if (this.notHungry == "n" && this.user =="r" ){
-         var Total = tax + totalamount + costMem;
-         console.log("new user with membership and ticket price" + Total);
-        }
-    console.log("Total Price: $" + Total);
-    sessionStorage.setItem("total", JSON.stringify(Total));
-    }
-  
-
-
-}
-=======
 import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersistServiceService } from 'src/app/services/persist-service.service';
@@ -75,6 +5,7 @@ import { OrderKey } from 'src/app/models/orderkey';
 import { Member } from 'src/app/models/member';
 import { ShowTime } from 'src/app/models/ShowTime';
 import { Menu } from 'src/app/models/menu';
+import { Seats } from 'src/app/models/seats';
 
 @Component({
   selector: 'app-checkout',
@@ -96,7 +27,7 @@ orderkey: OrderKey = new OrderKey;
 
   movieName = sessionStorage.getItem("movieName");
   showDate = sessionStorage.getItem("showDate");
-  seatNo = sessionStorage.getItem("seatNo");
+  seatId = sessionStorage.getItem("seatId");
   totalamount = sessionStorage.getItem("totalamount");
   menuId = sessionStorage.getItem("menuId");
   mealName = sessionStorage.getItem("mealName");
@@ -138,14 +69,21 @@ public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: numb
         console.log("logged user with meal and ticket price" + Total);
       }
     else if (this.notHungry == "n" && this.user=="l"){
-      let tax = Number(0.08885) * Number(totalamount);
+      let menuPrice = 0;
+      sessionStorage.setItem("menuId", "44");
+      console.log(sessionStorage.getItem("menuId"));      
+      let tax = Number(0.08885) * (Number(totalamount) + Number(menuPrice));
       sessionStorage.setItem("Tax", JSON.stringify(tax));
         let Total=tax + totalamount;
         sessionStorage.setItem("total", JSON.stringify(Total));
         console.log("logged user with ticket price" + Total);
        }
     else if (this.notHungry == "n" && this.user =="r" ){
-      let tax = Number(0.08885) * Number(totalamount + costMem);
+      let menuPrice = 0;
+      sessionStorage.setItem("menuId", "44");
+      console.log(sessionStorage.getItem("menuId"));
+      
+      let tax = Number(0.08885) * (Number(totalamount) + Number(menuPrice) + Number(costMem));
       sessionStorage.setItem("Tax", JSON.stringify(tax));
         let Total = tax + totalamount + costMem;
         sessionStorage.setItem("total", JSON.stringify(Total));
@@ -159,19 +97,21 @@ public calculateTotalPrice(totalamount: number, mealPrice: number, costMem: numb
 persistData(){
 
   let member = new Member();
-  member.id = Number(localStorage.getItem("member Id"));
+  member.memberId = Number(sessionStorage.getItem("memberId"));
   this.orderkey.member = member;
 
   let showTime = new ShowTime();
   showTime.showTimeId = Number(sessionStorage.getItem("showTimeId"));
   this.orderkey.showTime = showTime;
 
-  let seatId = this.seatNo;
+  let seatId = Number(sessionStorage.getItem("seatId"));
+  this.orderkey.seatId = seatId;
 
   let menu = new Menu();
   menu.menuId = Number(sessionStorage.getItem("menuId"));
   this.orderkey.menu = menu;
 
+  console.log(this.orderkey)
   this.persistServiceService.persistData(this.orderkey).subscribe(
     resp => {
       console.log(resp);
@@ -182,6 +122,5 @@ persistData(){
       console.log('could not post checkout');
     }
   )
+  }
 }
-}
->>>>>>> 4a7c30fa14ee215c552bf223ec81fea1bae7a35e

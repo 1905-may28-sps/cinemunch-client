@@ -13,13 +13,12 @@
    <h3>  {{nameMem}} Membership for ${{costMem}}/month! </h3>
    <h3>  Movie Name: {{movieName}} </h3>
    <h3>  Date and ShowTime:  {{showDate}} </h3>
-   <h3>  Seat Number: {{seatNo}} </h3>
+   <h3>  Seat Number: {{seatId}} </h3>
    <h3>  Total Ticket Price: $ {{totalamount}} </h3>
    <h3>  Meal Name: {{mealName}} </h3>
    <h3>  Meal Price: $ {{mealPrice}} </h3>
-   <h3>  Total: $ {{total}} </h3>
-   <!-- <h3> Total: $ {{totallog}} </h3> -->
- </ul> 
+   <h3>  Total: $ {{total| number:'.2-2'}} </h3>
+   </ul>
  </div>
 <div>
         <strong><span style="color:red" *ngIf = "checkoutError">{{checkoutErrorMessage}}</span></strong>

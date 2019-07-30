@@ -28,6 +28,7 @@ import { ShowtimesService } from './services/showtimes.service';
 import { MemberkeyService } from './services/memberkey.service';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { PersistServiceService } from './services/persist-service.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { PreviewComponent } from './components/preview/preview.component';
     FormsModule, StorageServiceModule
 
   ],
-  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService, MemberkeyService],
+  providers: [MoviesService, LoginService, RegisterService, MovieAndTimeslotService, ShowtimesService, MenuService, MemberkeyService, PersistServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

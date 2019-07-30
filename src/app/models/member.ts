@@ -1,7 +1,7 @@
 import { MemType } from './memType';
 
 export class Member {
-    id: number;
+    memberId: number;
     firstName: string;
     lastName: string;
     dob: string;

@@ -130,8 +130,8 @@ private seatmap = [];
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatNo"] = ""+seatNoCounter; }
-                else { seatObj["seatNo"] = ""+seatNoCounter; }
+                { seatObj["seatId"] = ""+seatNoCounter; }
+                else { seatObj["seatId"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
               }
@@ -174,7 +174,7 @@ private seatmap = [];
     console.log( "Seat to block: " , seatObject );
     console.log("Selected Seat");
     
-    sessionStorage.setItem("seatNo", String(seatObject.seatNo));
+    sessionStorage.setItem("seatId", String(seatObject.seatId));
 
     if(seatObject.status == "available")
     {

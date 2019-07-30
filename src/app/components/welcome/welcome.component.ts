@@ -67,7 +67,8 @@ member: Member = new Member();
         localStorage.setItem("name membership type", String(resp.memType.memTypeName));
         localStorage.setItem("cost membership type", String(resp.memType.memTypePrice));
         localStorage.setItem("user", "r");
-        localStorage.setItem("member Id", String(resp.id));
+        sessionStorage.setItem("memberId", ""+ resp.memberId );
+        console.log("Getting member id: " + sessionStorage.getItem("memberId"));
 
         this.router.navigateByUrl('/movies');
 
@@ -90,7 +91,8 @@ member: Member = new Member();
         localStorage.setItem("name membership type", String(resp.memType.memTypeName));
         localStorage.setItem("cost membership type", String(resp.memType.memTypePrice));
         localStorage.setItem("user", "l");
-        localStorage.setItem("member Id", String(resp.id));
+        sessionStorage.setItem("memberId", JSON.stringify(resp.memberId));
+        console.log("Getting member id: " + sessionStorage.getItem("memberId"));
 
         this.router.navigateByUrl('/movies');
 
