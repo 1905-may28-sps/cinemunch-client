@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 import { Movies } from '../models/movies';
+=======
+
+>>>>>>> bea0ac78ea596497524e416e5a64c1718ab3668f
 @Injectable({
   providedIn: 'root'
 })

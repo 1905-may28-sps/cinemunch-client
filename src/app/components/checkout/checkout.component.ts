@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> bea0ac78ea596497524e416e5a64c1718ab3668f
 import { Component, OnInit, ɵRenderDebugInfo } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersistServiceService } from 'src/app/services/persist-service.service';
@@ -122,5 +126,11 @@ persistData(){
       console.log('could not post checkout');
     }
   )
+<<<<<<< HEAD
   }
 }
+=======
+}
+}
+
+>>>>>>> bea0ac78ea596497524e416e5a64c1718ab3668f
