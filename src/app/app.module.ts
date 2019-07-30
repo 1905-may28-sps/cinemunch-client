@@ -58,11 +58,7 @@ import { PersistServiceService } from './services/persist-service.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> BillyDev
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
