@@ -31,10 +31,10 @@ orderkey: OrderKey = new OrderKey;
   menuId = sessionStorage.getItem("menuId");
   mealName = sessionStorage.getItem("mealName");
   mealPrice = sessionStorage.getItem("mealPrice");
-  totalp = sessionStorage.getItem("total");
+  total = sessionStorage.getItem("total");
   user = localStorage.getItem("user");
   notHungry = sessionStorage.getItem("notHungry");
-  taxp = sessionStorage.getItem("Tax");
+  Tax = sessionStorage.getItem("Tax");
 
     ngOnInit(): void {
     this.calculateTotalPrice (+this.totalamount, +this.mealPrice, +this.costMem);
