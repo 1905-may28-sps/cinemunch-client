@@ -64,6 +64,7 @@ export class MoviesComponent implements OnInit {
     sessionStorage.setItem("movieName", String(timeslot.movie.movieName));
     sessionStorage.setItem("ticketPrice", String(timeslot.movie.ticketPrice));
     sessionStorage.setItem("showDate", String(timeslot.showDate));
+    sessionStorage.setItem("movie id", String(timeslot.movie.movieid));
     this.router.navigateByUrl('/seats');
   }
 
