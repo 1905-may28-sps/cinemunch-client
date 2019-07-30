@@ -17,7 +17,7 @@
    <h3>  Total Ticket Price: $ {{totalamount}} </h3>
    <h3>  Meal Name: {{mealName}} </h3>
    <h3>  Meal Price: $ {{mealPrice}} </h3>
-   <h3>  Total: $ {{total}} </h3>
+   <h3>  Total: $ {{ total | number :'.2-2'}} </h3>
    <!-- <h3> Total: $ {{totallog}} </h3> -->
  </ul> 
  </div>
@@ -26,7 +26,8 @@
     <span id="spcbtwn"></span>
     <button type="button" class="btn btn-light">Submit Order</button>
 
-<h3>Would you like an Email receipt?</h3>
-<h3>Share on Twitter!</h3>
+    <a href="mailto:mail@example.com" class="btn btn-default">  Send to Email</a>
+   <a href="https://twitter.com" class="btn btn-default"><i class="fa fa-twitter"> post to twitter</i></a>
+
 </div>
 </div>

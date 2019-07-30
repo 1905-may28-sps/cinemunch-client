@@ -45,19 +45,21 @@ costMem=localStorage.getItem("cost membership type");
     console.log("Tax: $" + tax);
       if (this.user=="r"){
         var Total = tax + totalamount + mealPrice + costMem;
-       console.log("new user with meal and membership and ticket price" + Total);
+      //  Total = parseFloat(Math.round(Total*10^2)/10^2);
+        console.log("New user with meal and membership and ticket price: $" + Total);
        }
         else if(this.user=="l"){
          var Total=tax + totalamount + mealPrice;
-         console.log("logged user with meal and ticket price" + Total);
+
+         console.log("Logged user with meal and ticket price: $" + Total);
        }
      else if (this.notHungry == "n" && this.user=="l"){
          var Total=tax + totalamount;
-         console.log("logged user with ticket price" + Total);
+         console.log("Logged user with ticket price: $" + Total);
         }
      else if (this.notHungry == "n" && this.user =="r" ){
          var Total = tax + totalamount + costMem;
-         console.log("new user with membership and ticket price" + Total);
+         console.log("New user with membership and ticket price: $" + Total);
         }
     console.log("Total Price: $" + Total);
     sessionStorage.setItem("total", JSON.stringify(Total));
