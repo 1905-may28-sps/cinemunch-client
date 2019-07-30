@@ -22,11 +22,13 @@
  </ul> 
  </div>
 <div>
+        <strong><span style="color:red" *ngIf = "checkoutError">{{checkoutErrorMessage}}</span></strong>
     <button type="button" (click)="logOut(); backToWelcome()" class="btn btn-warning">Cancel Order</button>
     <span id="spcbtwn"></span>
-    <button type="button" class="btn btn-light">Submit Order</button>
+    <button type="button" class="btn btn-light" (click)="persistData()">Submit Order</button>
 
-<h3>Would you like an Email receipt?</h3>
-<h3>Share on Twitter!</h3>
+<h3><a href="mailto:mail@example.com" class="btn btn-default"> Would you like an Email receipt?</a></h3>
+
+<h3><a href="https://twitter.com" class="btn btn-default">Share on Twitter!<i class="fa fa-twitter"></i></a></h3>
 </div>
 </div>
