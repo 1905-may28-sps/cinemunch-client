@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
+import { SeatsService } from 'src/app/services/seats.service';
+import { Seats } from 'src/app/models/seats';
+//import { ShowTime } from 'src/app/models/ShowTime';
 
 @Component({
   selector: 'app-seats',
@@ -7,14 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeatsComponent implements OnInit {
 
-//   constructor() { }
+constructor(private seatsService : SeatsService, private router: Router) { }
 
-//   ngOnInit() {
-//   }
+showTimeId = sessionStorage.getItem("showTimeId");
+movieName = sessionStorage.getItem("movieName");
+showDate = sessionStorage.getItem("showDate")
 
-// }
+seats: Seats[] = [];
+seat: Seats = new Seats();
+
 private seatConfig: any = null;
-  private seatmap = [];
+private seatmap = [];
   
   private seatChartConfig = {
     showRowsLabel : false,
@@ -31,11 +38,21 @@ private seatConfig: any = null;
   };
   
 
-  title = 'seat-chart-generator';
+  // title = 'seat-chart-generator';
 
 
-  ngOnInit(): void {
+ 
+
+  //   ngOnInit() {
+  //     this.getSeats();
+  //   }
+  
+       
+    ngOnInit(): void {
+    this.getSeats();
     this.seatConfig = [
+  
+  
       {
         "seat_price": 18.50,
         "seat_map": [
@@ -59,13 +76,15 @@ private seatConfig: any = null;
         ]
       }
     ]    
-    this.processSeatChart(this.seatConfig);
-  }
+  
+    this.processSeatChart(this.seatConfig)
+    // this.processSeatChart(this.seats);
+    this.blockSeats("1_1,3_2");
 
+  }
 
   public processSeatChart ( map_data : any[] )
   {
-    
       if( map_data.length > 0 )
       {
         var seatNoCounter = 1;
@@ -83,7 +102,7 @@ private seatConfig: any = null;
           {
             row_label += item_map[ item_map.length - 2].seat_label;
           }
-          row_label += " : Rs. " + map_data[__counter].seat_price;
+          row_label += " : Dollars. " + map_data[__counter].seat_price;
           
           item_map.forEach(map_element => {
             var mapObj = {
@@ -100,17 +119,19 @@ private seatConfig: any = null;
             var totalItemCounter = 1;
             seatValArr.forEach(item => {
               var seatObj = {
+                // "key" : this.seats,
                 "key" : map_element.seat_label+"_"+totalItemCounter,
                 "price" : map_data[__counter]["seat_price"],
                 "status" : "available"
+                
               };
                
               if( item != '_')
               {
                 seatObj["seatLabel"] = map_element.seat_label+" "+seatNoCounter;
                 if(seatNoCounter < 10)
-                { seatObj["seatNo"] = "0"+seatNoCounter; }
-                else { seatObj["seatNo"] = ""+seatNoCounter; }
+                { seatObj["seatId"] = ""+seatNoCounter; }
+                else { seatObj["seatId"] = ""+seatNoCounter; }
                 
                 seatNoCounter++;
               }
@@ -132,10 +153,29 @@ private seatConfig: any = null;
       }
   }
 
+   public getSeats(){
+    this.seatsService.getAllSeats().subscribe(
+      seatsmovie => {
+        console.log(seatsmovie);
+        this.seats = seatsmovie;
+        console.log(seatsmovie[0].seatId);
+        console.log(this.seats);
+        
+      },
+      error => console.log('something bad happened')
+    );
 
-  public selectSeat( seatObject : any )
+    }
+  
+  
+  
+    selectSeat( seatObject : any )
   {
     console.log( "Seat to block: " , seatObject );
+    console.log("Selected Seat");
+    
+    sessionStorage.setItem("seatId", String(seatObject.seatId));
+
     if(seatObject.status == "available")
     {
       seatObject.status = "booked";
@@ -152,41 +192,50 @@ private seatConfig: any = null;
         this.cart.selectedSeats.splice(seatIndex , 1);
         this.cart.seatstoStore.splice(seatIndex , 1);
         this.cart.totalamount -= seatObject.price;
+        }
       }
-      
-    }
+      console.log("Total Amount: " + this.cart.totalamount);
+      sessionStorage.setItem("totalamount", String(this.cart.totalamount));
+        
   }
-}
 
-//   public blockSeats(seatsToBlock : string)
-//   {
-//     if(seatsToBlock != "")
-//     {
-//       var seatsToBlockArr = seatsToBlock.split(',');
-//       for (let index = 0; index < seatsToBlockArr.length; index++) {
-//         var seat =  seatsToBlockArr[index]+"";
-//         var seatSplitArr = seat.split("_");
-//         console.log("Split seat: " , seatSplitArr);
-//         for (let index2 = 0; index2 < this.seatmap.length; index2++) {
-//           const element = this.seatmap[index2];
-//           if(element.seatRowLabel == seatSplitArr[0])
-//           {
-//             var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
-//             if(seatObj)
-//             {
-//               console.log("\n\n\nFount Seat to block: " , seatObj);
-//               seatObj["status"] = "unavailable";
-//               this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
-//               console.log("\n\n\nSeat Obj" , seatObj);
-//               console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
-//               break;
-//             }
+ blockSeats(seatsToBlock : string)
+  {
+    if(seatsToBlock != "")
+    {
+      var seatsToBlockArr = seatsToBlock.split(',');
+      for (let index = 0; index < seatsToBlockArr.length; index++) {
+        var seat =  seatsToBlockArr[index]+"";
+        var seatSplitArr = seat.split("_");
+        console.log("Split seat: " , seatSplitArr);
+        for (let index2 = 0; index2 < this.seatmap.length; index2++) {
+          const element = this.seatmap[index2];
+          if(element.seatRowLabel == seatSplitArr[0])
+          {
+            var seatObj = element.seats[parseInt(seatSplitArr[1]) - 1];
+            if(seatObj)
+            {
+              console.log("\n\n\nFount Seat to block: " , seatObj);
+              seatObj["status"] = "unavailable";
+              this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1] = seatObj;
+              console.log("\n\n\nSeat Obj" , seatObj);
+              console.log(this.seatmap[index2]["seats"][parseInt(seatSplitArr[1]) - 1]);
+              break;
+            }
              
-//           }
-//         }
+          }
+        }
        
-//       }
-//     }
+      }
+    }
     
-//   }
-// }
+  }
+
+
+processBooking(){
+  console.log("processing Booking");
+  this.router.navigateByUrl('/menu');
+  console.log("Succesfully navigating to Menu")
+
+}
+}

@@ -1,6 +1,6 @@
 $seat-available-bg: white;
-$seat-available-color: #a0a0a0;
-$seat-booked-bg: #a0a0a0;
+$seat-available-color: #ad69af;
+$seat-booked-bg: #501d52;
 $seat-booked-color: white;
 $seat-unavailable-bg: black;
 $seat-unavailable-color: white;
@@ -146,4 +146,11 @@ $seat-unavailable-color: white;
 .no-padding
 {
     padding: 0;
+}
+.summary{
+    background-color: rgb(100, 47, 100);
+}
+
+h5{
+    color: rgb(238, 228, 238)
 }

@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  menubutton: String;
+
+  constructor() { 
+
+  this.menubutton = './assets/images/dropdown.png';
+  
+}
 
   ngOnInit() {
   }
 
+  twitter(){
+    window.location.href='http://www.twitter.com/';
+
+  }
+  facebook(){
+    window.location.href='http://www.facebook.com';
+  }
+
+  insta(){
+    window.location.href='http://www.instagram.com'
+  }
 }

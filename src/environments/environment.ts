@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
+  movieAppUrl: 'http://localhost:8082/cinemunch',
   MenuAppUrl: 'http://localhost:8082/cinemunch'
-
 };
 
 /*

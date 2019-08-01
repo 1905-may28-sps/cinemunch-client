@@ -1,12 +1,16 @@
 
-<div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">CineMunch Theater Menu</h1>
+
+        <div class="container " id="menu-head">
+          <h4 class="display-4">CineMunch Theater Menu</h4>
           <p class="lead">Choose from our preselected Menu</p>
+          <button class="btn btn-secondary" (click)="differentRoute(); doNotIncludeMealPrice()" >Not Hungry?</button>
+
         </div>
-      </div>
+    
 <!---->
       <div class="container">
+        <div class="row">
+            <div class="col post-item">
 <h3>Menu</h3>
 <ul>
 <li *ngFor= "let m of menus" 
@@ -15,21 +19,31 @@
   {{m.mealName}}, {{m.mealDescription}}, {{m.mealPrice}}
     </li>
 </ul>
+            </div>
+            <div class="col">
+
   <div *ngIf="selectedMenu" class="details">
-<h4> You selected: {{selectedMenu.mealName}}. Details:</h4>
+<h4> You selected: {{selectedMenu.mealName}}</h4>
+<h4> Seat Number :  {{seatNo}}</h4>
 <table>
 <tr>
   <td> Price:</td>
   <td><input [(ngModel)]="selectedMenu.mealPrice" placeholder="Price"> </td>
 </tr>
+<tr>
+  <td>
+      <img [src]="imgSrc" width="250" height="200">
+
+  </td>
+</tr>
+<tr>
+  <td><button  class="btn btn-secondary" (click)="differentRoute()">Check Out</button>
+</td>
+</tr>
 </table>
-<img [src]="imgSrc" width="250" height="200">
-<button type="button" class="btn btn-secondary">Check Out</button>
-
   </div>
-
-            </div>
-
+  </div>
+</div>
             <!-- 
            <div  *ngIf="selectedMenu" class="details">
                 <div id="order">Order Summary</div>

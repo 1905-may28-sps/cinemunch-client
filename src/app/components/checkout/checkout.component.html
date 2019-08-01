@@ -1,21 +1,39 @@
+<div id="checkoutBody">
 <div id="moviePoster" >
-    <img src="../../../assets/images/spiderman.jpg" width="250" height="200">
+    <!-- <img src="../../../assets/images/spiderman1.jpg" width="250" height="200"> -->
 </div>
 
 <div>
-<img src="../../../assets/images/food-1.jpg" width="250" height="200">
+<!-- <img src="../../../assets/images/food-1.jpg" width="250" height="200"> -->
 </div>
 
 <div>
-   <h3> Order Receipt</h3>
+   <h3> {{FNLN}}'s Order Receipt</h3>
    <ul>
-       <li>Dummy Data Here: MOVIE </li>
-       <li>Dummy Data Here: DATE AND SHOWTIME </li>
-       <li>Dummy Data Here: SEAT SELECTION </li>
-       <li>Dummy Data Here: FOOD ORDER</li>
-       <li>Dummy Data Here: TOTAL PRICE: $ </li>
-
+   <h3>  {{nameMem}} Membership for ${{costMem}}/month! </h3>
+   <h3>  Movie Name: {{movieName}} </h3>
+   <h3>  Date and ShowTime:  {{showDate}} </h3>
+   <h3>  Seat Number: {{seatId}} </h3>
+   <h3>  Total Ticket Price: $ {{totalamount}} </h3>
+   <h3>  Meal Name: {{mealName}} </h3>
+   <h3>  Meal Price: $ {{mealPrice}} </h3>
+<<<<<<< HEAD
+   <h3>  Total: $ {{total| number:'.2-2'}} </h3>
    </ul>
+=======
+   <h3>  Total: $ {{ total | number :'.2-2'}} </h3>
+   <!-- <h3> Total: $ {{totallog}} </h3> -->
+ </ul> 
+>>>>>>> bea0ac78ea596497524e416e5a64c1718ab3668f
+ </div>
+<div>
+        <strong><span style="color:red" *ngIf = "checkoutError">{{checkoutErrorMessage}}</span></strong>
+    <button type="button" (click)="logOut(); backToWelcome()" class="btn btn-warning">Cancel Order</button>
+    <span id="spcbtwn"></span>
+    <button type="button" class="btn btn-light" (click)="persistData()">Submit Order</button>
+
+<h3><a href="mailto:mail@example.com" class="btn btn-default"> Would you like an Email receipt?</a></h3>
+
+<h3><a href="https://twitter.com" class="btn btn-default">Share on Twitter!<i class="fa fa-twitter"></i></a></h3>
 </div>
-<h3> Would you like an Email receipt</h3>
-<h3>Share on Twitter!</h3>
+</div>

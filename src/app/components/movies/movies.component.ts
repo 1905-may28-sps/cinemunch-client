@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Movies } from 'src/app/models/movies';
 import { MoviesService } from 'src/app/services/movies.service';
 import { MovieAndTimeslotService } from 'src/app/services/movie-and-timeslot.service';
@@ -19,6 +19,11 @@ export class MoviesComponent implements OnInit {
   timeslot: movieAndTimeslot = new movieAndTimeslot();
 
   movies: Movies[];
+
+  selectedMovieName="Movie Name for Selected Movie";
+  selectedMoviePrice="Ticket Price to See Selected Movie";
+  selectedMovieDate="Date and Time of Selected Movie Showing";
+
   constructor (private _moviesService: MoviesService, private _timeslotService: MovieAndTimeslotService, private router: Router){
 
   this.crawlImg = './assets/images/crawl.jpg';
@@ -45,14 +50,24 @@ export class MoviesComponent implements OnInit {
   getShowtimes(id: number){
     this._timeslotService.getShowTimeByMovie(id).subscribe(
       data => {console.log(data);
-      this.timeslot = data;}
-    )
+      this.timeslot = data;
+      console.log(data);
+    
+    }
+    );
   }
-  selectedTimeslot(timeslot: showtimes){
-    console.log(timeslot);
+  selectedTimeslot(timeslot : showtimes){
+    
+    console.log("Selected Timeslot : "+ timeslot.showTimeId);
+    sessionStorage.setItem("showTimeId", String(timeslot.showTimeId));
+    sessionStorage.setItem("movie id", String(timeslot.movie.movieid));
+    sessionStorage.setItem("movieName", String(timeslot.movie.movieName));
+    sessionStorage.setItem("ticketPrice", String(timeslot.movie.ticketPrice));
+    sessionStorage.setItem("showDate", String(timeslot.showDate));
+    sessionStorage.setItem("movie id", String(timeslot.movie.movieid));
     this.router.navigateByUrl('/seats');
   }
-   
+
 }
 
  

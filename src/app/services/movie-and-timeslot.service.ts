@@ -10,9 +10,10 @@ export class MovieAndTimeslotService {
 
   httpOptions = {
     headers: new HttpHeaders({ 
-      'Access-Control-Allow-Origin':'http://localhost:8082',
-      'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization, Keep-Alive'
+      'Access-Control-Allow-Origin':'*',
+      // 'Access-Control-Allow-Origin':'http://localhost:8082',
+      // 'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+      // 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Authorization, Keep-Alive'
     })
   };
 
@@ -20,6 +21,7 @@ export class MovieAndTimeslotService {
   constructor(private http: HttpClient) { }
 
   public getShowTimeByMovie(id: number): Observable<movieAndTimeslot>{
+    console.log("INSIDE SHOWTIMEBY MOVIE...");
     return this.http.get<movieAndTimeslot>(`${this.url}/${id}`, this.httpOptions);
 }
 }

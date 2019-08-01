@@ -1,6 +1,6 @@
 <div class="container">
     <h4 class="display-24">CineMunch Movie List</h4>
-    <p class="lead">Choose from our Pre-selected Movie List</p>
+    <p class="lead">Choose your desired movie from the List</p>
 </div>
 
 <div class="container">
@@ -35,10 +35,12 @@
                         <h6>Released June 21st, 2019</h6>
                     </div>
                 </div>
-            </div>
-            <ul>
+            </div >
+            <div class = "textColor">
                 {{timeslot.movie.movieActors}}, {{timeslot.movie.movieDescription}}, {{timeslot.movie.ticketPrice}}
-                <li *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot()">
-                    {{time.showDate}} </li>
-            </ul>
+                
+                <li class="effect-shine" *ngFor="let time of timeslot.showtimes "  (click) = "selectedTimeslot(time)">
+                     {{time.showDate}}  </li>
+                
+            </div>
             <br><br><br>
