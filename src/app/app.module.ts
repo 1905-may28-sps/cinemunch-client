@@ -39,7 +39,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule, HttpClientModule,
-    FormsModule
+    FormsModule,
 
   ],
   providers: [MoviesService, MovieAndTimeslotService, ShowtimesService],
